@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chicago Field Guide — Process Journal</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ── Journal page layout ─────────────────────────────── */
+    .journal-page {
+      min-height: 100vh;
+    }
+
+    /* ── Top nav ─────────────────────────────────────────── */
+    .journal-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--space-6);
+      height: 52px;
+      background: rgba(13, 15, 20, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .nav-logo:hover { color: var(--color-cyan); }
+
+    .nav-cta {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-cyan);
+      border: 1.5px solid var(--color-cyan);
+      padding: 6px 16px;
+      border-radius: var(--radius-pill);
+      transition: background 180ms, color 180ms;
+      text-decoration: none;
+    }
+    .nav-cta:hover {
+      background: var(--color-cyan);
+      color: #000;
+    }
+
+    /* ── Hero ────────────────────────────────────────────── */
+    .journal-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--space-9) var(--space-6) var(--space-8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .journal-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 40%, rgba(0,180,216,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 20% 70%, rgba(191,27,44,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Large background city name */
+    .hero-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-serif);
+      font-size: clamp(6rem, 18vw, 18rem);
+      font-weight: 700;
+      color: rgba(255,255,255,0.025);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 860px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--color-cyan);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--color-cyan);
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--color-text);
+      margin-bottom: var(--space-5);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--color-text-muted);
+    }
+
+    .hero-subtitle {
+      font-size: var(--text-lg);
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      max-width: 540px;
+      margin-bottom: var(--space-7);
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #000;
+      background: var(--color-cyan);
+      border: none;
+      padding: 14px 28px;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: all 200ms;
+      text-decoration: none;
+      box-shadow: 0 0 24px rgba(0,180,216,0.35);
+    }
+    .btn-primary:hover {
+      background: #fff;
+      color: #000;
+      box-shadow: 0 0 36px rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll-hint {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Flag stripes below hero */
+    .hero-stripes {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .hero-stripes .s { flex: 1; }
+    .hero-stripes .s-blue  { background: var(--color-cyan); }
+    .hero-stripes .s-white { background: rgba(255,255,255,0.05); }
+
+    /* ── Stats bar ───────────────────────────────────────── */
+    .stats-bar {
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-surface);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat {
+      padding: var(--space-5) var(--space-6);
+      border-right: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+    .stat:last-child { border-right: none; }
+
+    .stat__num {
+      font-family: var(--font-serif);
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--color-text);
+    }
+
+    .stat__label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── Process sections ────────────────────────────────── */
+    .process-section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: var(--space-8) var(--space-6);
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: var(--space-7);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .process-section__meta {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      padding-top: 6px;
+    }
+
+    .process-section__content h2 {
+      font-family: var(--font-serif);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.2;
+      margin-bottom: var(--space-5);
+    }
+
+    .process-section__content p {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-4);
+      max-width: 600px;
+    }
+
+    .process-section__content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Quote callout */
+    .process-quote {
+      border-left: 3px solid var(--color-cyan);
+      padding: var(--space-4) var(--space-5);
+      margin: var(--space-5) 0;
+      background: var(--color-surface);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    }
+
+    .process-quote p {
+      font-family: var(--font-serif);
+      font-size: var(--text-xl);
+      font-style: italic;
+      color: var(--color-text) !important;
+      margin: 0 !important;
+      line-height: 1.5 !important;
+    }
+
+    /* Color swatches */
+    .color-swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin: var(--space-5) 0;
+    }
+
+    .swatch {
+      width: 80px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .swatch__color {
+      height: 48px;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-bottom: none;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+    }
+
+    .swatch__label {
+      padding: var(--space-1) var(--space-2);
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--color-text-dim);
+      letter-spacing: 0.04em;
+      background: var(--color-surface);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 0 0 var(--radius-md) var(--radius-md);
+    }
+
+    /* Tag demo */
+    .tag-demo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin: var(--space-5) 0;
+    }
+
+    .tag-demo-btn {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1.5px solid;
+      background: transparent;
+    }
+
+    /* Type specimen */
+    .type-specimen {
+      margin: var(--space-5) 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-4);
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--space-3);
+    }
+
+    .type-row__label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-dim);
+      min-width: 80px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .type-row__sample-serif {
+      font-family: var(--font-serif);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .type-row__sample-sans {
+      font-family: var(--font-sans);
+      font-size: var(--text-lg);
+      color: var(--color-text-muted);
+    }
+
+    .type-row__sample-mono {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--color-cyan);
+      letter-spacing: 0.05em;
+    }
+
+    /* Route diagram */
+    .route-diagram {
+      margin: var(--space-5) 0;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .route-step {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .route-step__num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--color-cyan);
+      color: #000;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .route-step__line {
+      flex: 1;
+      height: 1px;
+      background: repeating-linear-gradient(
+        to right,
+        var(--color-cyan) 0, var(--color-cyan) 6px,
+        transparent 6px, transparent 11px
+      );
+      opacity: 0.4;
+    }
+
+    .route-step__label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      white-space: nowrap;
+    }
+
+    /* Map technique block */
+    .code-block {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-left: 3px solid var(--color-red);
+      border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-5);
+      margin: var(--space-4) 0;
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      overflow-x: auto;
+    }
+
+    .code-block .prop { color: #5ccfc5; }
+    .code-block .val  { color: #f4a261; }
+    .code-block .cmt  { color: var(--color-text-dim); font-style: italic; }
+
+    /* ── Footer ──────────────────────────────────────────── */
+    .journal-footer {
+      border-top: 1px solid var(--color-border);
+      background: var(--color-surface);
+      padding: var(--space-8) var(--space-6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-5);
+      text-align: center;
+    }
+
+    .footer-stars {
+      color: var(--color-red);
+      font-size: var(--text-lg);
+      letter-spacing: 0.5em;
+    }
+
+    .footer-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-serif);
+      font-size: var(--text-xl);
+      font-style: italic;
+      color: var(--color-text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--space-2);
+      transition: border-color 200ms, color 200ms;
+    }
+    .footer-cta:hover {
+      color: var(--color-cyan);
+      border-bottom-color: var(--color-cyan);
+    }
+
+    .footer-credit {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-dim);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .process-section {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat:nth-child(2) { border-right: none; }
+      .stat:nth-child(3) { border-right: 1px solid var(--color-border); }
+
+      .hero-title { font-size: clamp(2.5rem, 10vw, 5rem); }
+
+      .journal-nav { padding: 0 var(--space-4); }
+    }
+  </style>
+</head>
+<body class="journal-page">
+
+  <!-- ── Nav ──────────────────────────────────────────────── -->
+  <nav class="journal-nav">
+    <a href="../index.html" class="nav-logo" style="opacity:0.5;letter-spacing:0.15em;font-size:0.7rem">← Gallery</a>
+    <a href="index.html" class="nav-logo">Chicago Guide</a>
+    <a href="guide.html" class="nav-cta">Open the Guide →</a>
+  </nav>
+
+  <!-- ── Hero ─────────────────────────────────────────────── -->
+  <section class="journal-hero">
+    <div class="hero-bg-text" aria-hidden="true">Chicago</div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Design Process Journal</p>
+      <h1 class="hero-title">
+        Chicago<br>
+        <em>Field Guide</em>
+      </h1>
+      <p class="hero-subtitle">
+        A personal atlas of the city — architecture, jazz, dark bars,
+        good coffee, and doors worth stopping for. This is the story of how it was built.
+      </p>
+      <div class="hero-actions">
+        <a href="guide.html" class="btn-primary">Open the Guide →</a>
+        <span class="hero-scroll-hint">↓ Read the process</span>
+      </div>
+    </div>
+
+    <div class="hero-stripes" aria-hidden="true">
+      <div class="s s-blue"></div>
+      <div class="s s-white"></div>
+      <div class="s s-blue"></div>
+    </div>
+  </section>
+
+  <!-- ── Stats bar ─────────────────────────────────────────── -->
+  <div class="stats-bar">
+    <div class="stat">
+      <span class="stat__num">25</span>
+      <span class="stat__label">Curated spots</span>
+    </div>
+    <div class="stat">
+      <span class="stat__num">6</span>
+      <span class="stat__label">Interest tags</span>
+    </div>
+    <div class="stat">
+      <span class="stat__num">∞</span>
+      <span class="stat__label">Route combinations</span>
+    </div>
+    <div class="stat">
+      <span class="stat__num">0</span>
+      <span class="stat__label">API keys needed</span>
+    </div>
+  </div>
+
+  <!-- ── Section 01: Concept ──────────────────────────────── -->
+  <section class="process-section">
+    <div class="process-section__meta">
+      <span class="section-label">01 — Concept</span>
+    </div>
+    <div class="process-section__content">
+      <h2>The brief: a city that resists simplification</h2>
+      <p>
+        Chicago is not one thing. It is the tallest skyscrapers and the oldest blues bars.
+        It is architectural pilgrimages and neon-lit cocktail dens. It is Sunday morning
+        Gospel and Saturday night techno in a basement below a rock venue.
+      </p>
+      <p>
+        Most tourist guides flatten this. They optimize for accessibility over honesty,
+        for TripAdvisor ratings over texture. The brief here was different: build a tool
+        that respects the city's complexity — that lets a visitor choose their own register
+        and receive a coherent, optimized day in return.
+      </p>
+      <div class="process-quote">
+        <p>"Give me the jazz and the doors — I'll take care of the rest."</p>
+      </div>
+      <p>
+        The output should feel less like a listicle and more like a note passed to you by
+        someone who actually lives there. Opinionated. Specific. With tips that only make
+        sense if you've actually stood in front of the thing.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Section 02: Choosing spots ──────────────────────── -->
+  <section class="process-section">
+    <div class="process-section__meta">
+      <span class="section-label">02 — Curation</span>
+    </div>
+    <div class="process-section__content">
+      <h2>25 spots across 6 categories — why these, why not others</h2>
+      <p>
+        The six tags — <strong style="color: var(--color-tag-arch)">Architecture</strong>,
+        <strong style="color: var(--color-tag-music)">Music</strong>,
+        <strong style="color: var(--color-tag-nightlife)">Nightlife</strong>,
+        <strong style="color: var(--color-tag-jazz)">Jazz</strong>,
+        <strong style="color: var(--color-tag-doors)">Doors</strong>,
+        <strong style="color: var(--color-tag-cafe)">Café</strong> —
+        were chosen to cover different visitor modes and times of day, while remaining
+        specific enough to produce useful filtering.
+      </p>
+      <p>
+        "Doors" is deliberately unconventional. Chicago's ornamental metalwork tradition
+        — Sullivan, Burnham, Root — is one of the city's most overlooked pleasures.
+        The category exists to surface spots that reward slowing down and looking closely.
+        Tribune Tower's embedded stones, the Rookery's glass atrium, the Sullivan Center's
+        cast iron: these are not detours from the city — they are the city.
+      </p>
+      <p>
+        Several spots deliberately span multiple tags: the Green Mill is music, jazz, and
+        nightlife. The Chicago Theatre is architecture and music. This cross-tagging means
+        a single-tag query still surfaces multi-dimensional places, and a multi-tag query
+        creates natural density in the resulting route.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Section 03: Design decisions ────────────────────── -->
+  <section class="process-section">
+    <div class="process-section__meta">
+      <span class="section-label">03 — Design</span>
+    </div>
+    <div class="process-section__content">
+      <h2>Dark, moody, specific — the aesthetic decisions</h2>
+      <p>
+        The color system is anchored in the Chicago municipal flag: two horizontal cyan
+        stripes and four red stars on white. For a dark interface, this translates to deep
+        navy backgrounds with cyan as the primary interactive color and red used sparingly
+        for emphasis. The result reads as civic without being literal.
+      </p>
+
+      <div class="color-swatches">
+        <div class="swatch">
+          <div class="swatch__color" style="background:#0d0f14"></div>
+          <div class="swatch__label">#0d0f14<br>BG</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#00b4d8"></div>
+          <div class="swatch__label">#00b4d8<br>Cyan</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#bf1b2c"></div>
+          <div class="swatch__label">#bf1b2c<br>Red</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#f4a261"></div>
+          <div class="swatch__label">#f4a261<br>Arch.</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#f1c40f"></div>
+          <div class="swatch__label">#f1c40f<br>Jazz</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#9d4edd"></div>
+          <div class="swatch__label">#9d4edd<br>Night.</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#5ccfc5"></div>
+          <div class="swatch__label">#5ccfc5<br>Music</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#7fb069"></div>
+          <div class="swatch__label">#7fb069<br>Café</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#e07a5f"></div>
+          <div class="swatch__label">#e07a5f<br>Doors</div>
+        </div>
+      </div>
+
+      <p>
+        Each tag gets its own color that carries consistently across filter buttons, card
+        left borders, map markers, and tag pills — creating a visual system where color
+        alone conveys category. The tag filter buttons use a physical toggle metaphor:
+        inset shadow at rest (pressed down), lift and glow on hover, filled and lit when
+        active.
+      </p>
+
+      <div class="type-specimen">
+        <div class="type-row">
+          <span class="type-row__label">Headings</span>
+          <span class="type-row__sample-serif">Playfair Display</span>
+        </div>
+        <div class="type-row">
+          <span class="type-row__label">Body</span>
+          <span class="type-row__sample-sans">Inter · clean, neutral, everywhere</span>
+        </div>
+        <div class="type-row">
+          <span class="type-row__label">Labels</span>
+          <span class="type-row__sample-mono">SPACE MONO · 0.08em</span>
+        </div>
+      </div>
+
+      <p>
+        Playfair Display in headings gives the guide an editorial register — it reads like
+        a magazine spread rather than a mobile app. Space Mono for labels and addresses
+        adds a cartographic, wayfinding quality: coordinates, addresses, and counts all
+        use this face. Inter does the quiet, utility work everywhere else.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Section 04: Tag system + routing ─────────────────── -->
+  <section class="process-section">
+    <div class="process-section__meta">
+      <span class="section-label">04 — Logic</span>
+    </div>
+    <div class="process-section__content">
+      <h2>The tag system and nearest-neighbor routing</h2>
+      <p>
+        Filtering is additive: selecting multiple tags returns spots matching <em>any</em>
+        of them, not all. This maximizes the usefulness of combined selections — "jazz +
+        café" returns a richer, more varied day than a strict AND would.
+      </p>
+      <p>
+        The route algorithm is a nearest-neighbor heuristic starting from Millennium Park
+        (the geographic and cultural center of the tourist zone). For each step, it selects
+        the unvisited spot closest to the current position by
+        <a href="https://en.wikipedia.org/wiki/Haversine_formula" target="_blank" rel="noopener">
+        haversine distance</a> — the spherical-earth calculation that correctly accounts
+        for longitude distortion at Chicago's latitude (~42°N).
+      </p>
+
+      <div class="route-diagram">
+        <div class="route-step">
+          <div class="route-step__num">1</div>
+          <div class="route-step__line"></div>
+          <span class="route-step__label">Millennium Park (anchor)</span>
+        </div>
+        <div class="route-step">
+          <div class="route-step__num">2</div>
+          <div class="route-step__line"></div>
+          <span class="route-step__label">Nearest unvisited spot</span>
+        </div>
+        <div class="route-step">
+          <div class="route-step__num">3</div>
+          <div class="route-step__line"></div>
+          <span class="route-step__label">Next nearest from #2…</span>
+        </div>
+        <div class="route-step">
+          <div class="route-step__num">N</div>
+          <div class="route-step__line"></div>
+          <span class="route-step__label">All filtered spots covered</span>
+        </div>
+      </div>
+
+      <p>
+        The result isn't mathematically optimal (the Traveling Salesman Problem is
+        NP-hard), but it's geographically sensible — producing routes that cluster nearby
+        spots rather than zigzagging across the city. For 25 spots or fewer,
+        nearest-neighbor typically gets within 15–20% of optimal without any perceptible
+        lag.
+      </p>
+      <p>
+        Cards and map markers are bidirectionally synced: clicking a card pans the map and
+        opens its popup; clicking a marker scrolls the corresponding card into view and
+        highlights it. The route sequence number appears on both.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Section 05: The map ──────────────────────────────── -->
+  <section class="process-section">
+    <div class="process-section__meta">
+      <span class="section-label">05 — The Map</span>
+    </div>
+    <div class="process-section__content">
+      <h2>Dark tiles with no API key — a CSS trick</h2>
+      <p>
+        Leaflet.js with OpenStreetMap tiles is entirely free and requires no API key.
+        The challenge was making the default light-colored OpenStreetMap tiles work with
+        a dark interface — without switching to a paid dark tile provider.
+      </p>
+      <p>
+        The solution is a single CSS filter applied to Leaflet's tile layer container.
+        The combination inverts the tile image, hue-rotates it to undo the color inversion,
+        and desaturates it slightly to produce a dark, moody base map that doesn't compete
+        with the colored markers:
+      </p>
+
+      <div class="code-block">
+        <span class="prop">.leaflet-tile-pane</span> {<br>
+        &nbsp;&nbsp;<span class="prop">filter</span>:
+          <span class="val">brightness(0.55)</span>
+          <span class="val">saturate(0.35)</span>
+          <span class="val">invert(1)</span>
+          <span class="val">hue-rotate(180deg)</span>;
+          <span class="cmt">/* dark map, no API key */</span><br>
+        }
+      </div>
+
+      <p>
+        Route markers use Leaflet's <code style="font-family:var(--font-mono);color:var(--color-cyan);font-size:0.9em">L.divIcon</code>
+        — custom HTML injected as map markers — so they inherit the same tag color system
+        as the sidebar cards. The route itself is drawn as a dashed cyan polyline that
+        updates live on every filter change.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Footer ────────────────────────────────────────────── -->
+  <footer class="journal-footer">
+    <div class="footer-stars">★ ★ ★ ★</div>
+    <a href="guide.html" class="footer-cta">
+      Explore the Guide →
+    </a>
+    <p class="footer-credit">Chicago Field Guide &middot; 2026</p>
+  </footer>
+
+</body>
+</html>

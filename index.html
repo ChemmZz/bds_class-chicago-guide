@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chicago Field Guide — Design Lab</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0c0c0c;
+      --surface:  #141414;
+      --border:   #222222;
+      --border-2: #2e2e2e;
+      --text:     #e4dfd6;
+      --muted:    #706a60;
+      --dim:      #3a3530;
+      --accent:   #c17f5a;
+      --font-head: 'Cormorant Garamond', Georgia, serif;
+      --font-mono: 'DM Mono', 'Courier New', monospace;
+    }
+
+    html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    ::selection { background: rgba(193,127,90,0.2); color: var(--text); }
+
+    /* ── Header ───────────────────────────────────────────── */
+    .lab-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .lab-id {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .lab-count {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--dim);
+    }
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    .lab-hero {
+      padding: 80px 40px 60px;
+      border-bottom: 1px solid var(--border);
+      max-width: 900px;
+    }
+
+    .lab-eyebrow {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .lab-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .lab-title {
+      font-family: var(--font-head);
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    .lab-title em {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .lab-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+      max-width: 480px;
+    }
+
+    /* ── Iterations grid ──────────────────────────────────── */
+    .iterations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border-bottom: 1px solid var(--border);
+      flex: 1;
+    }
+
+    .iteration-card {
+      background: var(--bg);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      transition: background 200ms;
+      position: relative;
+    }
+
+    .iteration-card:hover {
+      background: var(--surface);
+    }
+
+    /* Color swatch strip */
+    .card-palette {
+      display: flex;
+      height: 5px;
+      border-radius: 2px;
+      overflow: hidden;
+      gap: 1px;
+    }
+    .card-palette span { flex: 1; }
+
+    /* Card content */
+    .card-version {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .card-title {
+      font-family: var(--font-head);
+      font-size: 2.25rem;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      color: var(--text);
+      margin-top: 4px;
+    }
+
+    .card-style {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.8;
+      letter-spacing: 0.01em;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .card-tag {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dim);
+      border: 1px solid var(--border-2);
+      padding: 3px 8px;
+    }
+
+    /* Card actions */
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: auto;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+
+    .card-link {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 150ms;
+    }
+
+    .card-link--primary {
+      color: var(--text);
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--border-2);
+      transition: border-color 150ms, color 150ms;
+    }
+    .card-link--primary:hover {
+      border-bottom-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .card-link--secondary {
+      color: var(--muted);
+    }
+    .card-link--secondary:hover { color: var(--text); }
+
+    /* ── "Coming soon" placeholder card ──────────────────── */
+    .iteration-card--placeholder {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+    .placeholder-hint {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--dim);
+      border: 1px dashed var(--border-2);
+      padding: 12px 20px;
+      display: inline-block;
+    }
+
+    /* ── Footer ───────────────────────────────────────────── */
+    .lab-footer {
+      padding: 28px 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .lab-footer p {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--dim);
+    }
+
+    .footer-stars {
+      color: #bf1b2c;
+      letter-spacing: 0.3em;
+      font-size: 10px;
+    }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .lab-header, .lab-hero, .lab-footer { padding-left: 20px; padding-right: 20px; }
+      .iteration-card { padding: 28px 20px; }
+      .lab-title { font-size: clamp(2.5rem, 10vw, 5rem); }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="lab-header">
+    <span class="lab-id">Chicago / Design Lab</span>
+    <span class="lab-count">2 iterations</span>
+  </header>
+
+  <section class="lab-hero">
+    <p class="lab-eyebrow">Design Explorations</p>
+    <h1 class="lab-title">
+      Chicago<br>
+      <em>Field Guide</em>
+    </h1>
+    <p class="lab-desc">
+      A series of design explorations for a Chicago tourist guide.
+      Same data — 25 spots, 6 tags, one routing algorithm — different visions.
+    </p>
+  </section>
+
+  <main class="iterations-grid">
+
+    <!-- v1: Dark -->
+    <article class="iteration-card">
+      <div class="card-palette">
+        <span style="background:#0d0f14"></span>
+        <span style="background:#00b4d8"></span>
+        <span style="background:#bf1b2c"></span>
+        <span style="background:#141720"></span>
+        <span style="background:#e8e9ed"></span>
+      </div>
+      <div>
+        <p class="card-version">v1 · 2026</p>
+        <h2 class="card-title">Dark Chicago</h2>
+      </div>
+      <p class="card-style">
+        Chicago municipal flag palette — deep navy, cyan, red. Moody and editorial.
+        Dark OSM tiles via CSS invert. Playfair Display headings, Space Mono labels.
+        Glows, pill buttons, maximum contrast.
+      </p>
+      <div class="card-tags">
+        <span class="card-tag">Dark mode</span>
+        <span class="card-tag">Flag palette</span>
+        <span class="card-tag">Maximalist</span>
+        <span class="card-tag">Editorial serif</span>
+        <span class="card-tag">CSS tile invert</span>
+      </div>
+      <div class="card-actions">
+        <a href="v1-dark/guide.html" class="card-link card-link--primary">View Guide →</a>
+        <a href="v1-dark/index.html" class="card-link card-link--secondary">Process Journal</a>
+      </div>
+    </article>
+
+    <!-- v2: Japandy -->
+    <article class="iteration-card">
+      <div class="card-palette">
+        <span style="background:#f7f5f0"></span>
+        <span style="background:#3d5a80"></span>
+        <span style="background:#c17f5a"></span>
+        <span style="background:#faf9f6"></span>
+        <span style="background:#2c2925"></span>
+      </div>
+      <div>
+        <p class="card-version">v2 · 2026</p>
+        <h2 class="card-title">Japandy</h2>
+      </div>
+      <p class="card-style">
+        Japanese minimalism (ma — the meaningful interval) meets Scandinavian warmth.
+        Warm off-white ground, ink-blue accent. Cormorant Garamond at 300 weight.
+        Light map tiles, outline markers, rectangular buttons. Maximum restraint.
+      </p>
+      <div class="card-tags">
+        <span class="card-tag">Light mode</span>
+        <span class="card-tag">Warm neutrals</span>
+        <span class="card-tag">Minimalist</span>
+        <span class="card-tag">Japandy</span>
+        <span class="card-tag">Ultra-light type</span>
+      </div>
+      <div class="card-actions">
+        <a href="v2-japandy/guide.html" class="card-link card-link--primary">View Guide →</a>
+        <a href="v2-japandy/index.html" class="card-link card-link--secondary">Process Journal</a>
+      </div>
+    </article>
+
+    <!-- Placeholder for v3 -->
+    <article class="iteration-card iteration-card--placeholder">
+      <div class="card-palette">
+        <span style="background:#1a1a1a"></span>
+        <span style="background:#333"></span>
+        <span style="background:#555"></span>
+        <span style="background:#777"></span>
+        <span style="background:#999"></span>
+      </div>
+      <div>
+        <p class="card-version">v3 · ···</p>
+        <h2 class="card-title">Next iteration</h2>
+      </div>
+      <span class="placeholder-hint">In progress</span>
+    </article>
+
+  </main>
+
+  <footer class="lab-footer">
+    <p>Chicago Field Guide · Design Lab · 2026</p>
+    <span class="footer-stars">★ ★ ★ ★</span>
+  </footer>
+
+</body>
+</html>
