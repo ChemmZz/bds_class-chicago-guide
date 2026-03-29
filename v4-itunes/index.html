@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chicago Field Guide — Aqua 2003 Process Journal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,700;1,400&family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .journal-page { min-height: 100vh; }
+
+    /* ── Nav — brushed metal ─────────────────────────────── */
+    .journal-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--space-6);
+      height: 52px;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent, transparent 3px,
+          rgba(255,255,255,0.04) 3px,
+          rgba(255,255,255,0.04) 6px
+        ),
+        linear-gradient(180deg, #d8d8d8 0%, #c0c0c0 50%, #cccccc 100%);
+      border-bottom: 1px solid #909090;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.7);
+    }
+
+    .nav-logo {
+      font-family: var(--font-ui);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: #555;
+      text-decoration: none;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+    }
+    .nav-logo:hover { color: var(--color-blue); text-decoration: none; }
+
+    /* ── Hero ────────────────────────────────────────────── */
+    .journal-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--space-9) var(--space-6) var(--space-8);
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, #e8e8e8 0%, #d8d8d8 60%, #c8c8c8 100%);
+    }
+
+    /* Subtle pinstripe background */
+    .journal-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 1px,
+        rgba(255,255,255,0.3) 1px,
+        rgba(255,255,255,0.3) 2px
+      );
+      pointer-events: none;
+    }
+
+    /* Aqua blue radial hint */
+    .journal-hero::after {
+      content: '';
+      position: absolute;
+      top: 20%;
+      right: 10%;
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(52,120,246,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-ui);
+      font-size: clamp(6rem, 18vw, 18rem);
+      font-weight: 700;
+      color: rgba(52,120,246,0.04);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-content { position: relative; max-width: 860px; }
+
+    .hero-eyebrow {
+      font-family: var(--font-ui);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--color-blue);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: linear-gradient(90deg, #7ab4f8, #3478f6);
+      border-radius: 1px;
+    }
+
+    .hero-title {
+      font-family: var(--font-ui);
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: #1a1a1a;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.8);
+      margin-bottom: var(--space-5);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--color-blue);
+    }
+
+    .hero-subtitle {
+      font-size: var(--text-lg);
+      color: #555;
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: var(--space-7);
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+      flex-wrap: wrap;
+    }
+
+    .hero-scroll-hint {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: #888;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Bottom stripe */
+    .hero-stripes {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #7ab4f8 0%, #3478f6 50%, #1a52c8 100%);
+    }
+
+    /* ── Stats bar ───────────────────────────────────────── */
+    .stats-bar {
+      background: linear-gradient(180deg, #f0f0f0 0%, #e4e4e4 100%);
+      border-top: 1px solid #b0b0b0;
+      border-bottom: 1px solid #b0b0b0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+    }
+
+    .stat {
+      padding: var(--space-5) var(--space-6);
+      border-right: 1px solid #c8c8c8;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+    .stat:last-child { border-right: none; }
+
+    .stat__num {
+      font-family: var(--font-ui);
+      font-size: var(--text-3xl);
+      font-weight: 700;
+      line-height: 1;
+      color: var(--color-blue);
+      text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+    }
+
+    .stat__label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── Process sections ────────────────────────────────── */
+    .process-section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: var(--space-8) var(--space-6);
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: var(--space-7);
+      border-bottom: 1px solid #c8c8c8;
+    }
+
+    .process-section__meta {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      padding-top: 4px;
+    }
+
+    .process-section__content h2 {
+      font-family: var(--font-ui);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: #1a1a1a;
+      line-height: 1.15;
+      margin-bottom: var(--space-5);
+      text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+    .process-section__content p {
+      font-size: var(--text-base);
+      color: #555;
+      line-height: 1.75;
+      margin-bottom: var(--space-4);
+      max-width: 600px;
+    }
+
+    .process-section__content p:last-child { margin-bottom: 0; }
+
+    /* Quote */
+    .process-quote {
+      border-left: 3px solid var(--color-blue-light);
+      padding: var(--space-4) var(--space-5);
+      margin: var(--space-5) 0;
+      background: linear-gradient(180deg, rgba(52,120,246,0.05) 0%, rgba(52,120,246,0.02) 100%);
+      border-radius: 0 var(--radius-md) var(--radius-md) 0;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+
+    .process-quote p {
+      font-family: var(--font-ui);
+      font-size: var(--text-xl) !important;
+      font-style: italic !important;
+      color: #1a1a1a !important;
+      margin: 0 !important;
+      line-height: 1.5 !important;
+    }
+
+    /* Color swatches */
+    .color-swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin: var(--space-5) 0;
+    }
+
+    .swatch {
+      width: 80px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.4);
+    }
+
+    .swatch__color {
+      height: 48px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .swatch__label {
+      padding: var(--space-1) var(--space-2);
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: #777;
+      letter-spacing: 0.04em;
+      background: linear-gradient(180deg, #f0f0f0 0%, #e4e4e4 100%);
+    }
+
+    /* Type specimen */
+    .type-specimen {
+      margin: var(--space-5) 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-4);
+      border-bottom: 1px solid #ddd;
+      padding-bottom: var(--space-3);
+    }
+
+    .type-row__label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: #aaa;
+      min-width: 80px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .type-row__sample-ui {
+      font-family: var(--font-ui);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      color: #1a1a1a;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+    .type-row__sample-sans {
+      font-family: var(--font-ui);
+      font-size: var(--text-lg);
+      color: #555;
+    }
+
+    .type-row__sample-mono {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--color-blue);
+    }
+
+    /* Route diagram */
+    .route-diagram {
+      margin: var(--space-5) 0;
+      background: linear-gradient(180deg, #f4f4f4 0%, #ebebeb 100%);
+      border: 1px solid #c0c0c0;
+      border-radius: var(--radius-lg);
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .route-step {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .route-step__num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #7ab4f8 0%, #3478f6 100%);
+      color: #fff;
+      font-family: var(--font-ui);
+      font-size: 10px;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 1px 3px rgba(0,0,0,0.25);
+    }
+
+    .route-step__line {
+      flex: 1;
+      height: 1px;
+      background: repeating-linear-gradient(
+        to right,
+        #3478f6 0, #3478f6 6px,
+        transparent 6px, transparent 11px
+      );
+      opacity: 0.4;
+    }
+
+    .route-step__label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: #666;
+      white-space: nowrap;
+    }
+
+    /* Code block */
+    .code-block {
+      background: linear-gradient(180deg, #1a1a1a 0%, #111 100%);
+      border: 1px solid #444;
+      border-radius: var(--radius-md);
+      padding: var(--space-4) var(--space-5);
+      margin: var(--space-4) 0;
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: #d0d0d0;
+      line-height: 1.7;
+      overflow-x: auto;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .code-block .prop { color: #7ab4f8; }
+    .code-block .val  { color: #e07000; }
+    .code-block .cmt  { color: #666; font-style: italic; }
+
+    /* ── Footer ──────────────────────────────────────────── */
+    .journal-footer {
+      background: linear-gradient(180deg, #e0e0e0 0%, #d0d0d0 100%);
+      border-top: 1px solid #b0b0b0;
+      padding: var(--space-8) var(--space-6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-5);
+      text-align: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+
+    .footer-stars {
+      color: var(--color-tag-arch);
+      font-size: var(--text-lg);
+      letter-spacing: 0.5em;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+    }
+
+    .footer-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-ui);
+      font-size: var(--text-xl);
+      font-style: italic;
+      color: #333;
+      text-decoration: none;
+      border-bottom: 1px solid #b0b0b0;
+      padding-bottom: var(--space-2);
+      transition: color 200ms, border-color 200ms;
+      text-shadow: 0 1px 0 rgba(255,255,255,0.6);
+    }
+    .footer-cta:hover {
+      color: var(--color-blue);
+      border-bottom-color: var(--color-blue);
+      text-decoration: none;
+    }
+
+    .footer-credit {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: #999;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .process-section { grid-template-columns: 1fr; gap: var(--space-4); }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(2) { border-right: none; }
+      .stat:nth-child(3) { border-right: 1px solid #c8c8c8; }
+      .journal-nav { padding: 0 var(--space-4); }
+    }
+  </style>
+</head>
+<body class="journal-page">
+
+  <!-- ── Nav ──────────────────────────────────────────────── -->
+  <nav class="journal-nav">
+    <a href="../index.html" class="nav-logo" style="opacity:0.5;font-size:0.7rem">← Gallery</a>
+    <a href="index.html" class="nav-logo">Chicago Guide</a>
+    <a href="guide.html" class="btn-aqua" style="font-size:0.75rem;padding:5px 14px">Open the Guide →</a>
+  </nav>
+
+  <!-- ── Hero ─────────────────────────────────────────────── -->
+  <section class="journal-hero">
+    <div class="hero-bg-text" aria-hidden="true">iTunes</div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Design Process Journal — V4</p>
+      <h1 class="hero-title">
+        Chicago<br>
+        <em>Aqua 2003</em>
+      </h1>
+      <p class="hero-subtitle">
+        Mac OS X 10.2 Jaguar. Brushed metal. Aqua buttons. The era of
+        iTunes, iPhoto, and the original iPod. What happens when a city guide
+        gets the Finder treatment?
+      </p>
+      <div class="hero-actions">
+        <a href="guide.html" class="btn-aqua">Open the Guide →</a>
+        <span class="hero-scroll-hint">↓ Read the process</span>
+      </div>
+    </div>
+
+    <div class="hero-stripes" aria-hidden="true"></div>
+  </section>
+
+  <!-- ── Stats bar ─────────────────────────────────────────── -->
+  <div class="stats-bar">
+    <div class="stat">
+      <span class="stat__num">25</span>
+      <span class="stat__label">Curated spots</span>
+    </div>
+    <div class="stat">
+      <span class="stat__num">6</span>
+      <span class="stat__label">Interest tags</span>
+    </div>
+    <div class="stat">
+      <span class="stat__num">∞</span>
+      <span class="stat__label">Route combinations</span>
+    </div>
+    <div class="stat">
+      <span class="stat__num">0</span>
+      <span class="stat__label">API keys needed</span>
+    </div>
+  </div>
+
+  <!-- ── Section 01: Concept ──────────────────────────────── -->
+  <section class="process-section">
+    <div class="process-section__meta">
+      <span class="section-label">01 — Concept</span>
+    </div>
+    <div class="process-section__content">
+      <h2>The brief: what if Apple designed a city guide in 2003?</h2>
+      <p>
+        Mac OS X 10.2 Jaguar shipped in August 2002. iTunes 4 launched in April 2003.
+        The Aqua interface — brushed metal titlebars, candy-colored aqua buttons, pinstripe
+        backgrounds, thick scrollbar thumbs — was the dominant design language of the era.
+        Everything felt physical, tactile, glossy.
+      </p>
+      <p>
+        V1 was civic and editorial. V2 was Japandy restraint. V3 was Gotham noir.
+        V4 asks: what if the Chicago Field Guide had shipped as a Mac OS X application
+        in 2003? Same spots, same algorithm — but rendered in the language of
+        <em>Source Lists</em>, <em>Aqua buttons</em>, and <em>brushed metal</em>.
+      </p>
+      <div class="process-quote">
+        <p>"It looks like it belongs in the dock."</p>
+      </div>
+      <p>
+        The interface borrows directly from iTunes: a source-list sidebar with colored
+        dot icons, track-list rows that highlight blue on selection, a "Now Playing"
+        pill at the bottom of the map. The header is a brushed-metal gradient with
+        a repeating-horizontal-stripe texture. Everything has a shadow and a highlight.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Section 02: Design ───────────────────────────────── -->
+  <section class="process-section">
+    <div class="process-section__meta">
+      <span class="section-label">02 — Design</span>
+    </div>
+    <div class="process-section__content">
+      <h2>Brushed metal, Aqua blue, candy dots</h2>
+      <p>
+        The palette is drawn from the Aqua HIG (Human Interface Guidelines) of the era.
+        The background is a warm silver (#e2e2e2) with a subtle pinstripe. The primary
+        accent is iTunes blue (#3478f6) — the same blue that appeared on every
+        progress bar, selection highlight, and button from 2001 to 2007.
+      </p>
+
+      <div class="color-swatches">
+        <div class="swatch">
+          <div class="swatch__color" style="background:#e2e2e2"></div>
+          <div class="swatch__label">#e2e2e2<br>Metal</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:linear-gradient(180deg,#7ab4f8,#3478f6)"></div>
+          <div class="swatch__label">#3478f6<br>Aqua</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#e07000"></div>
+          <div class="swatch__label">#e07000<br>Arch.</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#00966d"></div>
+          <div class="swatch__label">#00966d<br>Jazz</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#8e44ad"></div>
+          <div class="swatch__label">#8e44ad<br>Night.</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#cc3333"></div>
+          <div class="swatch__label">#cc3333<br>Doors</div>
+        </div>
+      </div>
+
+      <p>
+        Tag filter buttons become iTunes-style source list rows — full-width, with a
+        small colored dot at left (like playlist icons). Selected rows get the
+        characteristic blue gradient: <code style="font-family:var(--font-mono);color:var(--color-blue)">linear-gradient(#5a9cf8, #3478f6)</code>.
+        Spot cards become track list rows: compact, alternating zebra stripe,
+        blue highlight on focus with white text throughout.
+      </p>
+
+      <div class="type-specimen">
+        <div class="type-row">
+          <span class="type-row__label">UI / Head</span>
+          <span class="type-row__sample-ui">Cabin</span>
+        </div>
+        <div class="type-row">
+          <span class="type-row__label">Body</span>
+          <span class="type-row__sample-sans">Cabin · the Myriad Pro of Google Fonts</span>
+        </div>
+        <div class="type-row">
+          <span class="type-row__label">Labels</span>
+          <span class="type-row__sample-mono">Inconsolata · 0.06em</span>
+        </div>
+      </div>
+
+      <p>
+        Cabin is the closest Google Fonts equivalent to Myriad Pro — the typeface Apple
+        used in nearly every product from 2002 to 2017. Combined with Inconsolata for
+        addresses and code-like labels, the typographic register reads as "Apple
+        application" rather than "website."
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Section 03: Logic ────────────────────────────────── -->
+  <section class="process-section">
+    <div class="process-section__meta">
+      <span class="section-label">03 — Logic</span>
+    </div>
+    <div class="process-section__content">
+      <h2>Same algorithm, different UI metaphor</h2>
+      <p>
+        The routing and filtering logic is identical across all four versions.
+        Nearest-neighbor from Millennium Park, additive OR filtering, Leaflet.js
+        with OSM tiles. The only map change in V4: a light
+        <code style="font-family:var(--font-mono);color:var(--color-blue)">saturate(0.75) brightness(0.97)</code>
+        filter — just enough to give the OSM tiles the slightly warm, slightly dull look
+        of an early 2000s web map. No inversion, no dark mode.
+      </p>
+
+      <div class="route-diagram">
+        <div class="route-step">
+          <div class="route-step__num">1</div>
+          <div class="route-step__line"></div>
+          <span class="route-step__label">Millennium Park (anchor)</span>
+        </div>
+        <div class="route-step">
+          <div class="route-step__num">2</div>
+          <div class="route-step__line"></div>
+          <span class="route-step__label">Nearest unvisited spot</span>
+        </div>
+        <div class="route-step">
+          <div class="route-step__num">3</div>
+          <div class="route-step__line"></div>
+          <span class="route-step__label">Next nearest from #2…</span>
+        </div>
+        <div class="route-step">
+          <div class="route-step__num">N</div>
+          <div class="route-step__line"></div>
+          <span class="route-step__label">All filtered spots covered</span>
+        </div>
+      </div>
+
+      <p>
+        The route polyline is iTunes blue (#3478f6) — dashed, 2.5px, 70% opacity.
+        The "Now Playing" info bar at the bottom of the map is a silver pill with a
+        gradient border and an inset shadow — the Aqua control metaphor applied to
+        a route counter.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Section 04: Technique ────────────────────────────── -->
+  <section class="process-section">
+    <div class="process-section__meta">
+      <span class="section-label">04 — Technique</span>
+    </div>
+    <div class="process-section__content">
+      <h2>Faking brushed metal with pure CSS</h2>
+      <p>
+        The brushed metal effect is a CSS layered background — a
+        <code style="font-family:var(--font-mono);color:var(--color-blue)">repeating-linear-gradient</code>
+        of transparent and near-white stripes (mimicking the horizontal brush marks) layered
+        over a vertical silver gradient. No images, no SVG.
+      </p>
+
+      <div class="code-block">
+        <span class="prop">.guide-header</span> {<br>
+        &nbsp;&nbsp;<span class="prop">background</span>:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt">/* brush stripes */</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="val">repeating-linear-gradient(</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="val">90deg,</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="val">transparent 0 3px,</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="val">rgba(255,255,255,0.04) 3px 6px</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="val">),</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="cmt">/* silver gradient */</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="val">linear-gradient(180deg,</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="val">#d8d8d8 0%, #b8b8b8 55%, #cccccc 100%</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="val">);</span><br>
+        }
+      </div>
+
+      <p>
+        Aqua buttons use three stacked effects: a multi-stop gradient (light → mid → dark
+        top-to-bottom), an <code style="font-family:var(--font-mono);color:var(--color-blue)">inset 0 1px 0</code>
+        white highlight, and a drop shadow. The thick Aqua scrollbar thumb is styled with
+        <code style="font-family:var(--font-mono);color:var(--color-blue)">::-webkit-scrollbar-thumb</code> — on
+        hover it turns the signature iTunes blue gradient.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Footer ────────────────────────────────────────────── -->
+  <footer class="journal-footer">
+    <div class="footer-stars">★ ★ ★ ★</div>
+    <a href="guide.html" class="footer-cta">
+      Open the Guide →
+    </a>
+    <p class="footer-credit">Chicago Field Guide · Aqua 2003 · 2026</p>
+  </footer>
+
+</body>
+</html>

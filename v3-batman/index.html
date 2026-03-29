@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chicago Field Guide — Gotham Process Journal</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ── Journal page layout ─────────────────────────────── */
+    .journal-page {
+      min-height: 100vh;
+    }
+
+    /* ── Top nav ─────────────────────────────────────────── */
+    .journal-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--space-6);
+      height: 52px;
+      background: rgba(8, 8, 8, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.2em;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 180ms;
+    }
+    .nav-logo:hover { color: var(--color-yellow); }
+
+    .nav-cta {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #000;
+      background: var(--color-yellow);
+      padding: 6px 16px;
+      border-radius: var(--radius-sm);
+      transition: background 180ms, color 180ms;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .nav-cta:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* ── Hero ────────────────────────────────────────────── */
+    .journal-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--space-9) var(--space-6) var(--space-8);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .journal-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 75% 35%, rgba(245, 197, 24, 0.05) 0%, transparent 65%),
+        radial-gradient(ellipse 35% 50% at 15% 75%, rgba(139, 61, 255, 0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Large background text */
+    .hero-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-serif);
+      font-size: clamp(6rem, 18vw, 18rem);
+      color: rgba(245, 197, 24, 0.025);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 860px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--color-yellow);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--color-yellow);
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(4rem, 10vw, 9rem);
+      line-height: 0.92;
+      letter-spacing: 0.04em;
+      color: var(--color-text);
+      margin-bottom: var(--space-5);
+    }
+
+    .hero-subtitle {
+      font-size: var(--text-lg);
+      font-family: var(--font-sans);
+      color: var(--color-text-muted);
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: var(--space-7);
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #000;
+      background: var(--color-yellow);
+      border: none;
+      padding: 13px 28px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all 200ms;
+      text-decoration: none;
+      box-shadow: 0 0 24px rgba(245, 197, 24, 0.3);
+    }
+    .btn-primary:hover {
+      background: #fff;
+      color: #000;
+      box-shadow: 0 0 40px rgba(255,255,255,0.15);
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll-hint {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* Yellow bar at bottom of hero */
+    .hero-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--color-yellow);
+      opacity: 0.6;
+    }
+
+    /* ── Stats bar ───────────────────────────────────────── */
+    .stats-bar {
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      background: var(--color-surface);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat {
+      padding: var(--space-5) var(--space-6);
+      border-right: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+    .stat:last-child { border-right: none; }
+
+    .stat__num {
+      font-family: var(--font-serif);
+      font-size: var(--text-3xl);
+      color: var(--color-yellow);
+      line-height: 1;
+    }
+
+    .stat__label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── Process sections ────────────────────────────────── */
+    .process-section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: var(--space-8) var(--space-6);
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: var(--space-7);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .process-section__meta {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      padding-top: 6px;
+    }
+
+    .process-section__content h2 {
+      font-family: var(--font-serif);
+      font-size: 2.4rem;
+      letter-spacing: 0.04em;
+      color: var(--color-text);
+      line-height: 1;
+      margin-bottom: var(--space-5);
+    }
+
+    .process-section__content p {
+      font-family: var(--font-sans);
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      line-height: 1.75;
+      margin-bottom: var(--space-4);
+      max-width: 600px;
+    }
+
+    .process-section__content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Quote callout */
+    .process-quote {
+      border-left: 3px solid var(--color-yellow);
+      padding: var(--space-4) var(--space-5);
+      margin: var(--space-5) 0;
+      background: var(--color-surface);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .process-quote p {
+      font-family: var(--font-serif) !important;
+      font-size: 1.6rem !important;
+      letter-spacing: 0.04em !important;
+      color: var(--color-text) !important;
+      margin: 0 !important;
+      line-height: 1.2 !important;
+    }
+
+    /* Color swatches */
+    .color-swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin: var(--space-5) 0;
+    }
+
+    .swatch {
+      width: 80px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+
+    .swatch__color {
+      height: 48px;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-bottom: none;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    }
+
+    .swatch__label {
+      padding: var(--space-1) var(--space-2);
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--color-text-dim);
+      letter-spacing: 0.04em;
+      background: var(--color-surface);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    }
+
+    /* Type specimen */
+    .type-specimen {
+      margin: var(--space-5) 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-4);
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--space-3);
+    }
+
+    .type-row__label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-dim);
+      min-width: 80px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .type-row__sample-serif {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      letter-spacing: 0.06em;
+      color: var(--color-text);
+    }
+
+    .type-row__sample-sans {
+      font-family: var(--font-sans);
+      font-size: var(--text-lg);
+      color: var(--color-text-muted);
+    }
+
+    .type-row__sample-mono {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--color-yellow);
+      letter-spacing: 0.06em;
+    }
+
+    /* Route diagram */
+    .route-diagram {
+      margin: var(--space-5) 0;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .route-step {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .route-step__num {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--color-yellow);
+      color: #000;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .route-step__line {
+      flex: 1;
+      height: 1px;
+      background: repeating-linear-gradient(
+        to right,
+        var(--color-yellow) 0, var(--color-yellow) 6px,
+        transparent 6px, transparent 11px
+      );
+      opacity: 0.3;
+    }
+
+    .route-step__label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      white-space: nowrap;
+    }
+
+    /* Code block */
+    .code-block {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      border-left: 3px solid var(--color-yellow);
+      border-radius: var(--radius-sm);
+      padding: var(--space-4) var(--space-5);
+      margin: var(--space-4) 0;
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      color: var(--color-text-muted);
+      line-height: 1.7;
+      overflow-x: auto;
+    }
+
+    .code-block .prop { color: #f5c518; }
+    .code-block .val  { color: #b5854a; }
+    .code-block .cmt  { color: var(--color-text-dim); font-style: italic; }
+
+    /* ── Footer ──────────────────────────────────────────── */
+    .journal-footer {
+      border-top: 1px solid var(--color-border);
+      background: var(--color-surface);
+      padding: var(--space-8) var(--space-6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-5);
+      text-align: center;
+    }
+
+    .footer-stars {
+      color: var(--color-yellow);
+      font-size: var(--text-lg);
+      letter-spacing: 0.5em;
+    }
+
+    .footer-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      letter-spacing: 0.06em;
+      color: var(--color-text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--space-2);
+      transition: border-color 200ms, color 200ms;
+    }
+    .footer-cta:hover {
+      color: var(--color-yellow);
+      border-bottom-color: var(--color-yellow);
+    }
+
+    .footer-credit {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-dim);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── Responsive ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .process-section {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+      }
+
+      .stats-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat:nth-child(2) { border-right: none; }
+      .stat:nth-child(3) { border-right: 1px solid var(--color-border); }
+
+      .journal-nav { padding: 0 var(--space-4); }
+    }
+  </style>
+</head>
+<body class="journal-page">
+
+  <!-- ── Nav ──────────────────────────────────────────────── -->
+  <nav class="journal-nav">
+    <a href="../index.html" class="nav-logo" style="opacity:0.4;font-size:0.7rem">← Gallery</a>
+    <a href="index.html" class="nav-logo">Chicago Guide</a>
+    <a href="guide.html" class="nav-cta">Open the Guide →</a>
+  </nav>
+
+  <!-- ── Hero ─────────────────────────────────────────────── -->
+  <section class="journal-hero">
+    <div class="hero-bg-text" aria-hidden="true">GOTHAM</div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow">Design Process Journal — V3</p>
+      <h1 class="hero-title">
+        CHICAGO<br>GOTHAM NOIR
+      </h1>
+      <p class="hero-subtitle">
+        The same 25 spots. The same algorithm. But seen through a darker lens —
+        Bebas Neue headlines, bat signal yellow, a surveillance-grade map.
+        What happens when a city guide becomes a noir dispatch.
+      </p>
+      <div class="hero-actions">
+        <a href="guide.html" class="btn-primary">Open the Guide →</a>
+        <span class="hero-scroll-hint">↓ Read the process</span>
+      </div>
+    </div>
+
+    <div class="hero-bar" aria-hidden="true"></div>
+  </section>
+
+  <!-- ── Stats bar ─────────────────────────────────────────── -->
+  <div class="stats-bar">
+    <div class="stat">
+      <span class="stat__num">25</span>
+      <span class="stat__label">Curated spots</span>
+    </div>
+    <div class="stat">
+      <span class="stat__num">6</span>
+      <span class="stat__label">Interest tags</span>
+    </div>
+    <div class="stat">
+      <span class="stat__num">∞</span>
+      <span class="stat__label">Route combinations</span>
+    </div>
+    <div class="stat">
+      <span class="stat__num">0</span>
+      <span class="stat__label">API keys needed</span>
+    </div>
+  </div>
+
+  <!-- ── Section 01: Concept ──────────────────────────────── -->
+  <section class="process-section">
+    <div class="process-section__meta">
+      <span class="section-label">01 — Concept</span>
+    </div>
+    <div class="process-section__content">
+      <h2>THE BRIEF: THE CITY AT NIGHT</h2>
+      <p>
+        V1 was editorial and civic — navy, cyan, the Chicago flag.
+        V2 stripped everything back to warm neutrals and whisper-weight type.
+        V3 asks a different question: what if the guide felt like surveillance? Like a dossier?
+        Like something slid under a door in the rain?
+      </p>
+      <p>
+        Batman's Gotham is fictional, but Chicago earns its noir credentials honestly —
+        Al Capone's old booth at the Green Mill, the Gothic Revival Tribune Tower,
+        underground dance clubs below rock venues. The city has always had a shadow side.
+        This iteration makes that explicit.
+      </p>
+      <div class="process-quote">
+        <p>SAME DATA. DIFFERENT MASK.</p>
+      </div>
+      <p>
+        The constraint: no new spots, no new tags, no new routing logic. The data is identical.
+        The design language does all the work. Typography, color, filter intensity — that's it.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Section 02: Palette ──────────────────────────────── -->
+  <section class="process-section">
+    <div class="process-section__meta">
+      <span class="section-label">02 — Design</span>
+    </div>
+    <div class="process-section__content">
+      <h2>NEAR-BLACK + BAT SIGNAL YELLOW</h2>
+      <p>
+        The palette reduces to two poles: near-black (#080808) and bat signal yellow (#f5c518).
+        Everything else — tag colors, text, borders — exists between those two extremes.
+        The yellow appears only where it matters: the header border, active filter glows,
+        route badges, the polyline cutting across the dark map.
+      </p>
+
+      <div class="color-swatches">
+        <div class="swatch">
+          <div class="swatch__color" style="background:#080808"></div>
+          <div class="swatch__label">#080808<br>BG</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#f5c518"></div>
+          <div class="swatch__label">#f5c518<br>Yellow</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#b5854a"></div>
+          <div class="swatch__label">#b5854a<br>Arch.</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#4a7fb5"></div>
+          <div class="swatch__label">#4a7fb5<br>Music</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#8b3dff"></div>
+          <div class="swatch__label">#8b3dff<br>Night.</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#c44536"></div>
+          <div class="swatch__label">#c44536<br>Doors</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch__color" style="background:#5a8a5a"></div>
+          <div class="swatch__label">#5a8a5a<br>Café</div>
+        </div>
+      </div>
+
+      <p>
+        Tag colors are deliberately muted — weathered stone for architecture, cold blue for music,
+        deep purple for nightlife. They're desaturated enough not to fight the dark ground but
+        vivid enough to distinguish categories at a glance.
+        Active filter buttons don't fill with color; they glow with it — a thin border in tag color
+        with a color-matched halo shadow.
+      </p>
+
+      <div class="type-specimen">
+        <div class="type-row">
+          <span class="type-row__label">Headings</span>
+          <span class="type-row__sample-serif">BEBAS NEUE</span>
+        </div>
+        <div class="type-row">
+          <span class="type-row__label">Body</span>
+          <span class="type-row__sample-sans">Barlow · utilitarian, condensed, urban</span>
+        </div>
+        <div class="type-row">
+          <span class="type-row__label">Labels</span>
+          <span class="type-row__sample-mono">SHARE TECH MONO · 0.10em</span>
+        </div>
+      </div>
+
+      <p>
+        Bebas Neue at display sizes reads like a headline torn from a newspaper. Combined with
+        Share Tech Mono for addresses and labels — a surveillance terminal aesthetic — the guide
+        feels like a classified brief rather than a lifestyle app. Barlow fills the middle ground
+        with just enough warmth to keep it readable.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Section 03: Logic ────────────────────────────────── -->
+  <section class="process-section">
+    <div class="process-section__meta">
+      <span class="section-label">03 — Logic</span>
+    </div>
+    <div class="process-section__content">
+      <h2>THE SAME ALGORITHM. THE SAME DATA.</h2>
+      <p>
+        Filtering is additive: selecting multiple tags returns spots matching <em>any</em>
+        of them. The route algorithm is a nearest-neighbor heuristic starting from Millennium Park.
+        For each step it selects the unvisited spot closest to the current position by
+        haversine distance — the spherical-earth calculation that accounts for longitude
+        distortion at Chicago's latitude (~42°N).
+      </p>
+
+      <div class="route-diagram">
+        <div class="route-step">
+          <div class="route-step__num">1</div>
+          <div class="route-step__line"></div>
+          <span class="route-step__label">Millennium Park (anchor)</span>
+        </div>
+        <div class="route-step">
+          <div class="route-step__num">2</div>
+          <div class="route-step__line"></div>
+          <span class="route-step__label">Nearest unvisited spot</span>
+        </div>
+        <div class="route-step">
+          <div class="route-step__num">3</div>
+          <div class="route-step__line"></div>
+          <span class="route-step__label">Next nearest from #2…</span>
+        </div>
+        <div class="route-step">
+          <div class="route-step__num">N</div>
+          <div class="route-step__line"></div>
+          <span class="route-step__label">All filtered spots covered</span>
+        </div>
+      </div>
+
+      <p>
+        The route isn't mathematically optimal — that's NP-hard — but it's geographically
+        sensible. Nearest-neighbor gets within 15–20% of optimal for city-scale datasets
+        with no perceptible lag. The yellow dashed polyline updates live on every filter change.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Section 04: The Map ──────────────────────────────── -->
+  <section class="process-section">
+    <div class="process-section__meta">
+      <span class="section-label">04 — The Map</span>
+    </div>
+    <div class="process-section__content">
+      <h2>SURVEILLANCE GRADE — THE DARKEST FILTER YET</h2>
+      <p>
+        The same CSS invert trick from V1, but pushed further. V1 used
+        <code style="font-family:var(--font-mono);color:var(--color-yellow);font-size:0.9em">brightness(0.55)</code>.
+        V3 drops to <code style="font-family:var(--font-mono);color:var(--color-yellow);font-size:0.9em">brightness(0.28)</code>
+        and desaturates more aggressively — the map reads like a satellite thermal image,
+        barely showing street structure beneath the dark ground.
+      </p>
+
+      <div class="code-block">
+        <span class="prop">.leaflet-tile-pane</span> {<br>
+        &nbsp;&nbsp;<span class="prop">filter</span>:
+          <span class="val">brightness(0.28)</span>
+          <span class="val">saturate(0.15)</span>
+          <span class="val">invert(1)</span>
+          <span class="val">hue-rotate(180deg)</span>;
+          <span class="cmt">/* surveillance mode */</span><br>
+        }
+      </div>
+
+      <p>
+        Route markers are the same technique as V1 — Leaflet <code style="font-family:var(--font-mono);color:var(--color-yellow);font-size:0.9em">L.divIcon</code>
+        with tag-colored circles and a yellow border ring. The route polyline switches from
+        cyan to bat signal yellow. Popups gain a yellow top border — the only element that
+        breaks the dark container pattern.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Footer ────────────────────────────────────────────── -->
+  <footer class="journal-footer">
+    <div class="footer-stars">★ ★ ★ ★</div>
+    <a href="guide.html" class="footer-cta">
+      Enter the City →
+    </a>
+    <p class="footer-credit">Chicago Field Guide · Gotham Noir · 2026</p>
+  </footer>
+
+</body>
+</html>
