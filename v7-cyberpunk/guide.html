@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chicago Field Guide — CYB3RPUNK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="guide.css">
+</head>
+<body class="guide-page">
+  <header class="guide-header">
+    <div class="header-nav">
+      <a href="../index.html" class="back-link">← GALLERY</a>
+      <a href="index.html" class="back-link">JOURNAL</a>
+    </div>
+    <div class="guide-title">
+      <span class="guide-title__city">CHICAGO</span>
+      <span class="guide-title__sub">Field Guide</span>
+    </div>
+    <div class="chicago-stars" aria-hidden="true">★ ★ ★ ★</div>
+  </header>
+  <div class="guide-layout">
+    <aside class="guide-sidebar">
+      <section class="tag-bar">
+        <p class="tag-bar__label">// FILTER_QUERY</p>
+        <div class="tag-grid">
+          <button class="tag-btn" data-tag="architecture">Architecture</button>
+          <button class="tag-btn" data-tag="music">Music</button>
+          <button class="tag-btn" data-tag="nightlife">Nightlife</button>
+          <button class="tag-btn" data-tag="jazz">Jazz</button>
+          <button class="tag-btn" data-tag="doors">Doors</button>
+          <button class="tag-btn" data-tag="cafe">Cafe</button>
+        </div>
+        <button class="tag-clear-btn" id="clearTags">CLEAR_FILTER</button>
+      </section>
+      <p class="results-count" id="resultsCount">Showing all 25 spots</p>
+      <div class="spots-grid" id="spotsGrid"></div>
+    </aside>
+    <main class="guide-map-panel">
+      <div id="map"></div>
+      <div class="route-info" id="routeInfo" hidden>
+        <span class="route-info__icon">▶</span>
+        <span class="route-info__text">ROUTE_OPT &middot; <span id="stopCount">0</span> nodes</span>
+      </div>
+    </main>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="guide.js"></script>
+</body>
+</html>

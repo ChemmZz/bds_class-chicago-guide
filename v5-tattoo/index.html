@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chicago Field Guide — V5 American Tattoo — Process Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rye&family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .journal-page { min-height: 100vh; background: var(--color-bg); }
+    .journal-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 var(--space-6); height: 52px; background: rgba(26,10,5,0.92); backdrop-filter: blur(8px); border-bottom: 2px solid var(--color-crimson); }
+    .nav-logo { font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.2em; color: var(--color-gold); text-transform: uppercase; text-decoration: none; }
+    .nav-logo:hover { color: var(--color-crimson); }
+    .nav-cta { font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-bg); background: var(--color-crimson); border: 2px solid var(--color-crimson); padding: 5px 14px; transition: all 180ms; text-decoration: none; }
+    .nav-cta:hover { background: var(--color-gold); border-color: var(--color-gold); color: var(--color-bg); }
+    .journal-hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: var(--space-9) var(--space-6) var(--space-8); position: relative; overflow: hidden; background: var(--color-bg); }
+    .hero-bg-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: var(--font-serif); font-size: clamp(5rem,16vw,16rem); font-weight: 400; color: rgba(139,0,0,0.06); white-space: nowrap; pointer-events: none; user-select: none; letter-spacing: 0.1em; }
+    .hero-content { position: relative; max-width: 860px; }
+    .hero-eyebrow { font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-gold); margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-3); }
+    .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 2px; background: var(--color-crimson); }
+    .hero-title { font-family: var(--font-serif); font-size: clamp(3rem,7vw,6rem); font-weight: 400; line-height: 0.95; letter-spacing: 0.05em; color: var(--color-text); margin-bottom: var(--space-5); }
+    .hero-title em { font-style: italic; color: var(--color-crimson); }
+    .hero-subtitle { font-family: var(--font-body); font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.6; max-width: 540px; margin-bottom: var(--space-7); }
+    .hero-actions { display: flex; align-items: center; gap: var(--space-5); flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: var(--space-2); font-family: var(--font-mono); font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #fff; background: var(--color-crimson); border: 2px solid var(--color-crimson); padding: 12px 28px; cursor: pointer; transition: all 200ms; text-decoration: none; box-shadow: 3px 3px 0 rgba(0,0,0,0.4); }
+    .btn-primary:hover { background: var(--color-gold); border-color: var(--color-gold); color: var(--color-bg); transform: translate(-1px,-1px); box-shadow: 4px 4px 0 rgba(0,0,0,0.5); }
+    .hero-scroll-hint { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-dim); letter-spacing: 0.08em; text-transform: uppercase; }
+    .stats-bar { border-top: 3px solid var(--color-crimson); border-bottom: 3px solid var(--color-crimson); background: var(--color-surface); display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat { padding: var(--space-5) var(--space-6); border-right: 2px solid var(--color-black); display: flex; flex-direction: column; gap: var(--space-1); }
+    .stat:last-child { border-right: none; }
+    .stat__num { font-family: var(--font-serif); font-size: var(--text-3xl); font-weight: 400; line-height: 1; color: var(--color-crimson); }
+    .stat__label { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-dim); text-transform: uppercase; letter-spacing: 0.1em; }
+    .process-section { max-width: 860px; margin: 0 auto; padding: var(--space-8) var(--space-6); display: grid; grid-template-columns: 120px 1fr; gap: var(--space-7); border-bottom: 2px solid var(--color-border); }
+    .process-section__content h2 { font-family: var(--font-serif); font-size: var(--text-2xl); font-weight: 400; color: var(--color-text); line-height: 1.2; margin-bottom: var(--space-5); letter-spacing: 0.04em; }
+    .process-section__content p { font-family: var(--font-body); font-size: var(--text-base); color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-4); max-width: 600px; }
+    .section-label { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-gold); text-transform: uppercase; letter-spacing: 0.14em; display: block; padding-top: 8px; }
+    .process-quote { border-left: 4px solid var(--color-crimson); padding: var(--space-4) var(--space-5); margin: var(--space-5) 0; background: var(--color-surface); }
+    .process-quote p { font-family: var(--font-serif) !important; font-size: var(--text-xl) !important; color: var(--color-text) !important; margin: 0 !important; line-height: 1.5 !important; }
+    .color-swatches { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-5) 0; }
+    .swatch { width: 80px; overflow: hidden; }
+    .swatch__color { height: 48px; border: 2px solid rgba(0,0,0,0.2); border-bottom: none; }
+    .swatch__label { padding: var(--space-1) var(--space-2); font-family: var(--font-mono); font-size: 9px; color: var(--color-text-dim); letter-spacing: 0.04em; background: var(--color-surface); border: 1px solid var(--color-border); }
+    .code-block { background: var(--color-surface); border: 2px solid var(--color-border); border-left: 4px solid var(--color-crimson); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; font-family: var(--font-mono); font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.7; overflow-x: auto; }
+    .code-block .prop { color: var(--color-crimson); } .code-block .val { color: var(--color-gold); }
+    .journal-footer { border-top: 3px solid var(--color-crimson); background: var(--color-surface); padding: var(--space-8) var(--space-6); display: flex; flex-direction: column; align-items: center; gap: var(--space-5); text-align: center; }
+    .footer-stars { color: var(--color-gold); font-size: var(--text-lg); letter-spacing: 0.5em; }
+    .footer-cta { font-family: var(--font-serif); font-size: var(--text-xl); color: var(--color-text); text-decoration: none; border-bottom: 2px solid var(--color-crimson); padding-bottom: var(--space-2); transition: color 200ms; }
+    .footer-cta:hover { color: var(--color-crimson); }
+    .footer-credit { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-dim); letter-spacing: 0.08em; }
+    @media (max-width: 768px) { .process-section { grid-template-columns: 1fr; } .stats-bar { grid-template-columns: repeat(2,1fr); } }
+  </style>
+</head>
+<body class="journal-page">
+  <nav class="journal-nav">
+    <a href="../index.html" class="nav-logo" style="font-size:0.7rem;opacity:0.6">← Gallery</a>
+    <a href="index.html" class="nav-logo">Chicago Guide</a>
+    <a href="guide.html" class="nav-cta">Open the Guide →</a>
+  </nav>
+
+  <section class="journal-hero">
+    <div class="hero-bg-text" aria-hidden="true">Chicago</div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Design Process Journal · V5</p>
+      <h1 class="hero-title">Classic American<br><em>Tattoo</em></h1>
+      <p class="hero-subtitle">Flash sheet energy meets Chicago street culture. Parchment ground, crimson fills, gold accents — built like a tattoo parlor wall in Wicker Park.</p>
+      <div class="hero-actions">
+        <a href="guide.html" class="btn-primary">Open the Guide →</a>
+        <span class="hero-scroll-hint">↓ Read the process</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat"><span class="stat__num">25</span><span class="stat__label">Curated spots</span></div>
+    <div class="stat"><span class="stat__num">6</span><span class="stat__label">Interest tags</span></div>
+    <div class="stat"><span class="stat__num">V5</span><span class="stat__label">Iteration</span></div>
+    <div class="stat"><span class="stat__num">0</span><span class="stat__label">API keys needed</span></div>
+  </div>
+
+  <section class="process-section">
+    <div class="process-section__meta"><span class="section-label">01 — Concept</span></div>
+    <div class="process-section__content">
+      <h2>Flash sheets and parlor walls</h2>
+      <p>Classic American tattoo flash — the sheets of pre-drawn designs displayed in parlor windows — has a distinct visual grammar: heavy black outlines, limited color palette, bold typography, and an aged parchment ground. This iteration translates that grammar into a web interface.</p>
+      <div class="process-quote"><p>"Every card is a flash sheet. Every tag is a flash category. The city is the parlor wall."</p></div>
+      <p>The challenge was preserving the warmth and weight of physical flash art in a digital format — keeping borders thick, colors saturated, and typography heavy without losing readability at screen density.</p>
+    </div>
+  </section>
+
+  <section class="process-section">
+    <div class="process-section__meta"><span class="section-label">02 — Palette</span></div>
+    <div class="process-section__content">
+      <h2>Parchment, crimson, jet black, gold</h2>
+      <p>Four colors — no more. The aged parchment ground (#f5efe0) gives warmth without sweetness. Deep crimson (#8b0000) is used for active states and structural emphasis. Gold (#c9a84c) marks the precious: tips, accents, highlights. Black is structural — the outline that holds everything together.</p>
+      <div class="color-swatches">
+        <div class="swatch"><div class="swatch__color" style="background:#f5efe0"></div><div class="swatch__label">#f5efe0 BG</div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#8b0000"></div><div class="swatch__label">#8b0000 Crimson</div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#c9a84c"></div><div class="swatch__label">#c9a84c Gold</div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#1a1a1a"></div><div class="swatch__label">#1a1a1a Black</div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#e8dcc8"></div><div class="swatch__label">#e8dcc8 Surface</div></div>
+      </div>
+      <p>The aged-paper texture is achieved entirely in CSS via a layered radial-gradient noise pattern — no image assets required.</p>
+    </div>
+  </section>
+
+  <section class="process-section">
+    <div class="process-section__meta"><span class="section-label">03 — Typography</span></div>
+    <div class="process-section__content">
+      <h2>Rye, Special Elite, Courier Prime</h2>
+      <p>Rye is a vintage western/tattoo slab used for display headings. Special Elite evokes the worn quality of a typewriter or vintage printing press and carries body text. Courier Prime handles monospace labels with a warm, slightly aged quality that matches the overall tone.</p>
+      <p>Together these three faces span the range from display flash heading to fine-print address detail — all within a consistent vintage register that never feels like a Halloween costume.</p>
+    </div>
+  </section>
+
+  <section class="process-section">
+    <div class="process-section__meta"><span class="section-label">04 — Map</span></div>
+    <div class="process-section__content">
+      <h2>Sepia toning — the old map look</h2>
+      <p>The map tile filter targets the aged cartographic aesthetic: sepia warmth, slightly desaturated colors, reduced brightness. The result looks like a well-loved paper map without requiring any custom tile server.</p>
+      <div class="code-block">
+        <span class="prop">.leaflet-tile-pane</span> {<br>
+        &nbsp;&nbsp;<span class="prop">filter</span>: <span class="val">sepia(0.4) saturate(0.6) brightness(0.9)</span>;<br>
+        }
+      </div>
+      <p>The crimson route polyline pops clearly against this warm, desaturated base — the same way flash outlines pop against aged parchment.</p>
+    </div>
+  </section>
+
+  <footer class="journal-footer">
+    <div class="footer-stars">★ ★ ★ ★</div>
+    <a href="guide.html" class="footer-cta">Explore the Guide →</a>
+    <p class="footer-credit">Chicago Field Guide · V5 American Tattoo · 2026</p>
+  </footer>
+</body>
+</html>

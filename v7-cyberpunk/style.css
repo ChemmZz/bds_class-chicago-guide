@@ -1,0 +1,76 @@
+/* ============================================================
+   CHICAGO GUIDE — V7 Cyberpunk
+   style.css
+   ============================================================ */
+:root {
+  --color-bg:        #050505;
+  --color-surface:   #0a0a0a;
+  --color-surface-2: #111111;
+  --color-border:    #00ff41;
+
+  --color-green:     #00ff41;
+  --color-magenta:   #ff00ff;
+  --color-green-dim: rgba(0, 255, 65, 0.12);
+  --color-magenta-dim: rgba(255, 0, 255, 0.12);
+
+  --color-text:      #00ff41;
+  --color-text-muted:#007a1f;
+  --color-text-dim:  #003a0f;
+
+  --color-tag-arch:      #ff9900;
+  --color-tag-music:     #00e5ff;
+  --color-tag-nightlife: #ff00ff;
+  --color-tag-jazz:      #00ff41;
+  --color-tag-doors:     #ff3300;
+  --color-tag-cafe:      #aaff00;
+
+  --font-serif: 'Orbitron', monospace;
+  --font-sans:  'Share Tech Mono', monospace;
+  --font-mono:  'Share Tech Mono', monospace;
+
+  --text-xs:   0.75rem; --text-sm: 0.875rem; --text-base: 1rem;
+  --text-lg:   1.125rem; --text-xl: 1.375rem; --text-2xl: 1.75rem;
+  --text-3xl:  2.25rem;  --text-4xl: 3rem;
+
+  --space-1: 4px;  --space-2: 8px;   --space-3: 12px;
+  --space-4: 16px; --space-5: 24px;  --space-6: 32px;
+  --space-7: 48px; --space-8: 64px;  --space-9: 96px;
+
+  --radius-sm: 0; --radius-md: 0; --radius-lg: 0; --radius-pill: 0;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  /* scanlines */
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 65, 0.015) 2px,
+    rgba(0, 255, 65, 0.015) 4px
+  );
+}
+img, svg { display: block; max-width: 100%; }
+a { color: var(--color-magenta); text-decoration: none; transition: color 180ms; }
+a:hover { color: var(--color-green); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); border-left: 1px solid var(--color-green); }
+::-webkit-scrollbar-thumb { background: var(--color-green); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-magenta); }
+
+::selection { background: var(--color-green); color: #000; }
+:focus-visible { outline: 1px solid var(--color-green); outline-offset: 2px; }
+
+.section-label { font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.2em; color: var(--color-text-dim); }
+
+.tag-pill { display: inline-flex; align-items: center; font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; padding: 1px 6px; border-radius: 0; border: 1px solid currentColor; opacity: 0.85; }
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }

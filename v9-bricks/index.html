@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chicago Field Guide — V9 Bricks — Process Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Source+Sans+3:wght@400;600&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .journal-page { min-height: 100vh; background: var(--color-bg); }
+    .journal-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 var(--space-6); height: 52px; background: rgba(45,26,14,0.95); backdrop-filter: blur(8px); border-bottom: 2px solid var(--color-brown); }
+    .nav-logo { font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.15em; color: var(--color-mortar); text-transform: uppercase; text-decoration: none; }
+    .nav-logo:hover { color: #fff; }
+    .nav-cta { font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-mortar); border: 1px solid var(--color-mortar); padding: 5px 12px; border-radius: 2px; transition: all 180ms; text-decoration: none; }
+    .nav-cta:hover { color: #fff; border-color: #fff; }
+    .journal-hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: flex-end; padding: var(--space-9) var(--space-6) var(--space-8); position: relative; overflow: hidden; background: repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(0,0,0,0.06) 60px, rgba(0,0,0,0.06) 61px), repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(0,0,0,0.06) 19px, rgba(0,0,0,0.06) 20px), var(--color-bg); }
+    .hero-bg-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: var(--font-serif); font-size: clamp(5rem,16vw,16rem); font-weight: 700; color: rgba(139,58,42,0.06); white-space: nowrap; pointer-events: none; user-select: none; letter-spacing: 0.06em; }
+    .hero-content { position: relative; max-width: 860px; }
+    .hero-eyebrow { font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--color-brick); margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-3); }
+    .hero-eyebrow::before { content: ''; display: block; width: 28px; height: 3px; background: var(--color-brick); }
+    .hero-title { font-family: var(--font-serif); font-size: clamp(3rem,7vw,6rem); font-weight: 700; line-height: 0.95; letter-spacing: 0.04em; color: var(--color-text); margin-bottom: var(--space-5); }
+    .hero-title em { font-style: normal; color: var(--color-brick); }
+    .hero-subtitle { font-family: var(--font-body); font-size: var(--text-lg); color: var(--color-text-muted); line-height: 1.6; max-width: 540px; margin-bottom: var(--space-7); }
+    .hero-actions { display: flex; align-items: center; gap: var(--space-5); flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: var(--space-2); font-family: var(--font-serif); font-size: var(--text-sm); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #fff; background: var(--color-brick); border: none; padding: 12px 28px; border-radius: var(--radius-sm); cursor: pointer; transition: all 200ms; text-decoration: none; box-shadow: 0 4px 16px rgba(139,58,42,0.3); }
+    .btn-primary:hover { background: var(--color-brown); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(45,26,14,0.35); }
+    .hero-scroll-hint { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-dim); letter-spacing: 0.08em; text-transform: uppercase; }
+    .stats-bar { border-top: 2px solid var(--color-border); border-bottom: 2px solid var(--color-border); background: var(--color-surface); display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat { padding: var(--space-5) var(--space-6); border-right: 1px solid var(--color-border); display: flex; flex-direction: column; gap: var(--space-1); }
+    .stat:last-child { border-right: none; }
+    .stat__num { font-family: var(--font-serif); font-size: var(--text-3xl); font-weight: 700; line-height: 1; color: var(--color-brick); }
+    .stat__label { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-dim); text-transform: uppercase; letter-spacing: 0.1em; }
+    .process-section { max-width: 860px; margin: 0 auto; padding: var(--space-8) var(--space-6); display: grid; grid-template-columns: 120px 1fr; gap: var(--space-7); border-bottom: 2px solid var(--color-border); }
+    .process-section__content h2 { font-family: var(--font-serif); font-size: var(--text-2xl); font-weight: 700; color: var(--color-text); line-height: 1.2; margin-bottom: var(--space-5); }
+    .process-section__content p { font-family: var(--font-body); font-size: var(--text-base); color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-4); max-width: 600px; }
+    .section-label { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-brick); text-transform: uppercase; letter-spacing: 0.14em; display: block; padding-top: 8px; font-weight: 700; }
+    .process-quote { border-left: 5px solid var(--color-brick); padding: var(--space-4) var(--space-5); margin: var(--space-5) 0; background: var(--color-surface); border-radius: var(--radius-sm); }
+    .process-quote p { font-family: var(--font-serif) !important; font-size: var(--text-xl) !important; color: var(--color-text) !important; margin: 0 !important; line-height: 1.5 !important; font-weight: 700 !important; }
+    .color-swatches { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: var(--space-5) 0; }
+    .swatch { width: 80px; overflow: hidden; border-radius: var(--radius-sm); }
+    .swatch__color { height: 48px; border-radius: var(--radius-sm) var(--radius-sm) 0 0; }
+    .swatch__label { padding: var(--space-1) var(--space-2); font-family: var(--font-mono); font-size: 9px; color: var(--color-text-dim); background: var(--color-surface); border: 1px solid var(--color-border); }
+    .code-block { background: var(--color-surface); border: 1px solid var(--color-border); border-left: 4px solid var(--color-brick); border-radius: var(--radius-sm); padding: var(--space-4) var(--space-5); margin: var(--space-4) 0; font-family: var(--font-mono); font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.7; overflow-x: auto; }
+    .code-block .prop { color: var(--color-brick); } .code-block .val { color: var(--color-brown); }
+    .journal-footer { border-top: 2px solid var(--color-border); background: var(--color-surface); padding: var(--space-8) var(--space-6); display: flex; flex-direction: column; align-items: center; gap: var(--space-5); text-align: center; }
+    .footer-stars { color: var(--color-brick); font-size: var(--text-lg); letter-spacing: 0.5em; }
+    .footer-cta { font-family: var(--font-serif); font-size: var(--text-xl); font-weight: 700; color: var(--color-text); text-decoration: none; border-bottom: 2px solid var(--color-brick); padding-bottom: var(--space-2); transition: color 200ms; }
+    .footer-cta:hover { color: var(--color-brick); }
+    .footer-credit { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-dim); letter-spacing: 0.08em; }
+    @media (max-width: 768px) { .process-section { grid-template-columns: 1fr; } .stats-bar { grid-template-columns: repeat(2,1fr); } }
+  </style>
+</head>
+<body class="journal-page">
+  <nav class="journal-nav">
+    <a href="../index.html" class="nav-logo" style="font-size:0.7rem;opacity:0.6">← Gallery</a>
+    <a href="index.html" class="nav-logo">Chicago Guide</a>
+    <a href="guide.html" class="nav-cta">Open the Guide →</a>
+  </nav>
+
+  <section class="journal-hero">
+    <div class="hero-bg-text" aria-hidden="true">Chicago</div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Design Process Journal · V9</p>
+      <h1 class="hero-title">Industrial<br><em>Bricks</em></h1>
+      <p class="hero-subtitle">Exposed brick, mortar seams, deep brown, warm off-white. The aesthetic of a Wicker Park basement bar at noon — rough, warm, completely honest.</p>
+      <div class="hero-actions">
+        <a href="guide.html" class="btn-primary">Open the Guide →</a>
+        <span class="hero-scroll-hint">↓ Read the process</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat"><span class="stat__num">25</span><span class="stat__label">Curated spots</span></div>
+    <div class="stat"><span class="stat__num">6</span><span class="stat__label">Interest tags</span></div>
+    <div class="stat"><span class="stat__num">V9</span><span class="stat__label">Iteration</span></div>
+    <div class="stat"><span class="stat__num">0</span><span class="stat__label">API keys needed</span></div>
+  </div>
+
+  <section class="process-section">
+    <div class="process-section__meta"><span class="section-label">01 — Concept</span></div>
+    <div class="process-section__content">
+      <h2>The exposed brick bar aesthetic</h2>
+      <p>Chicago's Wicker Park, Logan Square, and Pilsen neighborhoods are full of spaces that converted industrial buildings into bars, studios, and coffee shops — keeping the exposed brick walls intact. That particular texture — rough red clay, mortar seams, worn wood — is as much Chicago as Mies van der Rohe.</p>
+      <div class="process-quote"><p>"The best bars in Chicago look like they've been there since before the building had a name."</p></div>
+      <p>The CSS brick pattern on structural elements (the header) uses only repeating linear gradients — simulating the vertical mortar joints and horizontal course lines of actual brick masonry without any image assets.</p>
+    </div>
+  </section>
+
+  <section class="process-section">
+    <div class="process-section__meta"><span class="section-label">02 — Palette</span></div>
+    <div class="process-section__content">
+      <h2>Brick red, mortar gray, deep brown, warm off-white</h2>
+      <p>The palette is pulled directly from the materials: brick clay (#8b3a2a), mortar (#c8bfb0), the dark brown of old timber framing (#2d1a0e), and the warm off-white of aged plaster (#f2ede6). No pure whites or pure blacks — everything is slightly tinted with the warmth of age.</p>
+      <div class="color-swatches">
+        <div class="swatch"><div class="swatch__color" style="background:#f2ede6"></div><div class="swatch__label">#f2ede6 BG</div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#8b3a2a"></div><div class="swatch__label">#8b3a2a Brick</div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#c8bfb0"></div><div class="swatch__label">#c8bfb0 Mortar</div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#2d1a0e"></div><div class="swatch__label">#2d1a0e Brown</div></div>
+        <div class="swatch"><div class="swatch__color" style="background:#e8ddd0"></div><div class="swatch__label">#e8ddd0 Surface</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="process-section">
+    <div class="process-section__meta"><span class="section-label">03 — Map</span></div>
+    <div class="process-section__content">
+      <h2>Warm desaturated tiles — the urban warmth</h2>
+      <p>A light filter pulls the OSM tiles toward the warm desaturated tones of the palette — slightly sepia, slightly dim — without making the map hard to read. The brick red route polyline reads clearly against this treated background.</p>
+      <div class="code-block">
+        <span class="prop">.leaflet-tile-pane</span> {<br>
+        &nbsp;&nbsp;<span class="prop">filter</span>: <span class="val">saturate(0.6) brightness(0.95) sepia(0.15)</span>;<br>
+        }
+      </div>
+    </div>
+  </section>
+
+  <footer class="journal-footer">
+    <div class="footer-stars">★ ★ ★ ★</div>
+    <a href="guide.html" class="footer-cta">Explore the Guide →</a>
+    <p class="footer-credit">Chicago Field Guide · V9 Bricks · 2026</p>
+  </footer>
+</body>
+</html>
