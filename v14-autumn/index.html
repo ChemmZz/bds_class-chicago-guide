@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V14 — Autumn | Process Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf3e8; --surface: #fff8ee; --accent: #c87820; --secondary: #b84820;
+      --text: #2c1a08; --muted: #7a5828; --border: #c8a878; --font-serif: 'Playfair Display', serif;
+      --font-body: 'Crimson Pro', serif; --font-mono: 'Roboto Mono', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 17px; font-weight: 300; line-height: 1.7; padding: 0 24px 80px; }
+    header { max-width: 720px; margin: 0 auto; padding: 56px 0 40px; border-bottom: 2px solid var(--border); margin-bottom: 52px; }
+    .label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--secondary); margin-bottom: 12px; }
+    h1 { font-family: var(--font-serif); font-size: 3.4rem; font-weight: 900; line-height: 1.1; color: var(--text); margin-bottom: 16px; }
+    .sub { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
+    main { max-width: 720px; margin: 0 auto; }
+    h2 { font-family: var(--font-serif); font-size: 1.9rem; font-weight: 700; color: var(--accent); margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    p { margin-bottom: 18px; color: var(--muted); }
+    .swatches { display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap; }
+    .swatch { width: 48px; height: 48px; border: 1px solid var(--border); border-radius: 2px; box-shadow: 2px 2px 0 rgba(44,26,8,0.12); }
+    .swatch-label { font-family: var(--font-mono); font-size: 9px; color: var(--muted); text-align: center; margin-top: 4px; }
+    .swatch-wrap { display: flex; flex-direction: column; align-items: center; }
+    .decision { background: var(--surface); border-left: 4px solid var(--accent); padding: 16px 20px; margin: 20px 0; border-radius: 0 6px 6px 0; box-shadow: 2px 2px 0 rgba(44,26,8,0.1); }
+    .decision strong { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--secondary); display: block; margin-bottom: 6px; }
+    a.cta { display: inline-block; margin-top: 24px; font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--accent); padding: 10px 28px; text-decoration: none; border-radius: 6px; box-shadow: 2px 2px 0 rgba(44,26,8,0.2); transition: all 160ms; }
+    a.cta:hover { background: var(--secondary); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="label">Chicago Field Guide — Iteration 14</div>
+  <h1>Autumn</h1>
+  <div class="sub">Lincoln Square in October · Amber · Rust · Playfair 900 + Crimson Pro 300</div>
+</header>
+<main>
+  <h2>Concept</h2>
+  <p>Late October in Lincoln Square. The maples along Western Avenue have gone amber and rust. The German bakeries are pulling strudel. The farmers market is down to the last squash and the first cider. This is Chicago's kindest season.</p>
+  <p>The typographic experiment here is maximum weight contrast within a single serif category: Playfair Display at 900 weight for display text, Crimson Pro at 300 for body. The difference is nearly four stops of weight — dramatically legible.</p>
+
+  <h2>Color Palette</h2>
+  <div class="swatches">
+    <div class="swatch-wrap"><div class="swatch" style="background:#faf3e8"></div><div class="swatch-label">#faf3e8<br>Warm Cream</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#c87820"></div><div class="swatch-label">#c87820<br>Amber</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#b84820"></div><div class="swatch-label">#b84820<br>Rust</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#f0e0c0"></div><div class="swatch-label">#f0e0c0<br>Harvest</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#2c1a08"></div><div class="swatch-label">#2c1a08<br>Walnut</div></div>
+  </div>
+
+  <h2>Design Decisions</h2>
+  <div class="decision"><strong>Playfair 900 + Crimson Pro 300</strong> Nearly four stops of weight contrast between headline and body. Playfair's extreme thick-thin stroke contrast at 900 weight reads like carved wood type from a 19th century broadside.</div>
+  <div class="decision"><strong>Amber gradient header</strong> linear-gradient from amber to a warm harvest tan — the color of late afternoon sun through turning leaves.</div>
+  <div class="decision"><strong>Autumnal map filter</strong> sepia(0.35) saturate(1.2) brightness(0.96) hue-rotate(-8deg) warms the map tiles toward amber-gold, making the city look like it's photographed in October light.</div>
+  <div class="decision"><strong>Warm displacement shadows</strong> 2px 2px 0 rgba(44,26,8,0.12) — walnut-tinted shadows on cards, matching the deep brown text color.</div>
+
+  <a href="guide.html" class="cta">Open Chicago Guide →</a>
+</main>
+</body>
+</html>

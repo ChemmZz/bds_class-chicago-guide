@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V13 — Winter | Process Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f0f4f8; --surface: #f8fbfd; --accent: #2e6da4; --text: #0f2034;
+      --muted: #4a6070; --border: #b8ccd8; --font-serif: 'DM Serif Display', serif;
+      --font-body: 'DM Sans', sans-serif; --font-mono: 'JetBrains Mono', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: linear-gradient(180deg, #f0f4f8 0%, #e8f0f6 100%); background-attachment: fixed; color: var(--text); font-family: var(--font-body); font-size: 15px; font-weight: 300; line-height: 1.7; padding: 0 24px 80px; }
+    header { max-width: 720px; margin: 0 auto; padding: 56px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 52px; }
+    .label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 12px; }
+    h1 { font-family: var(--font-serif); font-size: 3.2rem; line-height: 1.1; color: var(--text); margin-bottom: 16px; }
+    .sub { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
+    main { max-width: 720px; margin: 0 auto; }
+    h2 { font-family: var(--font-serif); font-size: 1.7rem; color: var(--accent); margin: 40px 0 16px; }
+    p { margin-bottom: 18px; color: var(--muted); }
+    .swatches { display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap; }
+    .swatch { width: 48px; height: 48px; border: 1px solid var(--border); border-radius: 6px; box-shadow: 0 2px 8px rgba(15,32,52,0.08); }
+    .swatch-label { font-family: var(--font-mono); font-size: 9px; color: var(--muted); text-align: center; margin-top: 4px; }
+    .swatch-wrap { display: flex; flex-direction: column; align-items: center; }
+    .decision { background: rgba(248,251,253,0.9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(184,204,216,0.6); border-left: 3px solid var(--accent); padding: 16px 20px; margin: 20px 0; border-radius: 0 6px 6px 0; box-shadow: 0 2px 12px rgba(15,32,52,0.06); }
+    .decision strong { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); display: block; margin-bottom: 6px; }
+    a.cta { display: inline-block; margin-top: 24px; font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--accent); padding: 10px 28px; text-decoration: none; border-radius: 6px; box-shadow: 0 4px 14px rgba(46,109,164,0.3); transition: all 160ms; }
+    a.cta:hover { background: #1f5a8a; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="label">Chicago Field Guide — Iteration 13</div>
+  <h1>Winter</h1>
+  <div class="sub">Crystalline · Frosted Glass · Lake Michigan in January · DM Serif Display</div>
+</header>
+<main>
+  <h2>Concept</h2>
+  <p>January on the Magnificent Mile, wind chill at −22°F, the lake a grey sheet of ice. The design reflects the austere clarity of a Chicago winter — no warmth in the palette, no decorative flourishes. Only steel and ice and the pale sky above the Loop.</p>
+  <p>The frosted-glass route-info bar is the iteration's signature move: backdrop-filter: blur(12px) on a semi-transparent panel, giving the impression of breath on a cold window.</p>
+
+  <h2>Color Palette</h2>
+  <div class="swatches">
+    <div class="swatch-wrap"><div class="swatch" style="background:#f0f4f8"></div><div class="swatch-label">#f0f4f8<br>Ice</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#2e6da4"></div><div class="swatch-label">#2e6da4<br>Lake Blue</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#dde6ed"></div><div class="swatch-label">#dde6ed<br>Frost</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#b8ccd8"></div><div class="swatch-label">#b8ccd8<br>Steel</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#0f2034"></div><div class="swatch-label">#0f2034<br>Deep Navy</div></div>
+  </div>
+
+  <h2>Design Decisions</h2>
+  <div class="decision"><strong>Frosted glass route info</strong> backdrop-filter: blur(12px) + rgba(248,251,253,0.9) background. The only frosted glass element in all 19 versions.</div>
+  <div class="decision"><strong>Pale sky gradient body</strong> linear-gradient from #f0f4f8 to #e8f0f6, fixed attachment. The background shifts as you scroll — like the sky through a train window.</div>
+  <div class="decision"><strong>Restrained map filter</strong> saturate(0.3) brightness(1.08) hue-rotate(185deg) drains almost all color from the map, leaving it ghostly blue-grey — the city as seen through frosted glass.</div>
+  <div class="decision"><strong>DM pairing</strong> DM Serif Display + DM Sans — same typeface family, different classifications. The contrast between the bracketed serifs and the geometric grotesque feels like the city's contrast between old granite and glass curtain walls.</div>
+
+  <a href="guide.html" class="cta">Open Chicago Guide →</a>
+</main>
+</body>
+</html>

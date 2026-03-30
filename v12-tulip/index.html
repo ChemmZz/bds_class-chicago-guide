@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V12 — Tulip / Botanical | Process Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:ital,wght@0,300;0,400;0,700;1,300&family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf8f3; --surface: #fff; --accent: #3d6b44; --secondary: #c94040;
+      --text: #2a2218; --muted: #6a5c48; --border: #d8d0c0; --font-serif: 'Cormorant Garamond', serif;
+      --font-body: 'Lato', sans-serif; --font-mono: 'Inconsolata', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      background-image: repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(61,107,68,0.05) 23px, rgba(61,107,68,0.05) 24px);
+      color: var(--text); font-family: var(--font-body); font-size: 15px; line-height: 1.7; padding: 0 24px 80px;
+    }
+    header { max-width: 720px; margin: 0 auto; padding: 56px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 52px; }
+    .label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--secondary); margin-bottom: 12px; }
+    h1 { font-family: var(--font-serif); font-size: 3.4rem; font-weight: 300; line-height: 1.15; color: var(--text); margin-bottom: 16px; font-style: italic; }
+    .sub { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
+    main { max-width: 720px; margin: 0 auto; }
+    h2 { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 600; color: var(--accent); margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    p { margin-bottom: 18px; color: var(--muted); font-weight: 300; }
+    .swatches { display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap; }
+    .swatch { width: 48px; height: 48px; border: 1px solid var(--border); border-radius: 3px; box-shadow: 0 2px 8px rgba(42,34,24,0.1); }
+    .swatch-label { font-family: var(--font-mono); font-size: 9px; color: var(--muted); text-align: center; margin-top: 4px; }
+    .swatch-wrap { display: flex; flex-direction: column; align-items: center; }
+    .decision { background: var(--surface); border-left: 3px solid var(--accent); padding: 16px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; box-shadow: 0 2px 8px rgba(42,34,24,0.08); }
+    .decision strong { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); display: block; margin-bottom: 6px; }
+    a.cta { display: inline-block; margin-top: 24px; font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--accent); border: none; padding: 10px 28px; text-decoration: none; border-radius: 999px; box-shadow: 0 4px 14px rgba(61,107,68,0.35); transition: all 160ms; }
+    a.cta:hover { background: #2e5234; box-shadow: 0 6px 20px rgba(61,107,68,0.45); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="label">Chicago Field Guide — Iteration 12</div>
+  <h1>Tulip / Botanical</h1>
+  <div class="sub">Dutch Golden Age Illustration · Stem Green · Cormorant Garamond 300</div>
+</header>
+<main>
+  <h2>Concept</h2>
+  <p>Inspired by Dutch Golden Age botanical illustration — the Maria Sibylla Merian plates, Hortus Cliffortianus, the hand-colored engravings that mapped the natural world before photography. The Chicago spots become specimens.</p>
+  <p>Cormorant Garamond at weight 300 gives the display text a hairline delicacy appropriate for engraving captions. Lato at 300 keeps body text airy. The laid-paper line texture on the page background simulates watercolor rag paper.</p>
+
+  <h2>Color Palette</h2>
+  <div class="swatches">
+    <div class="swatch-wrap"><div class="swatch" style="background:#faf8f3"></div><div class="swatch-label">#faf8f3<br>Cream</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#3d6b44"></div><div class="swatch-label">#3d6b44<br>Stem</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#c94040"></div><div class="swatch-label">#c94040<br>Tulip</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#e8b84b"></div><div class="swatch-label">#e8b84b<br>Stamen</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#9b7fc4"></div><div class="swatch-label">#9b7fc4<br>Lilac</div></div>
+  </div>
+
+  <h2>Design Decisions</h2>
+  <div class="decision"><strong>Laid-paper texture</strong> Body background uses a repeating-linear-gradient at 24px intervals to simulate the horizontal lines of fine watercolor paper — visible at low opacity without cluttering the reading surface.</div>
+  <div class="decision"><strong>Cormorant Garamond 300 italic display</strong> The lightest weights of Garamond feel like an engraver's incised line. Paired with 600 weight for headers, the contrast is wide and dramatic.</div>
+  <div class="decision"><strong>Pill-shaped tags</strong> radius: 999px on all interactive elements contrasts the rigid specimen-frame aesthetic of the cards.</div>
+  <div class="decision"><strong>Map: hand-colored engraving</strong> saturate(0.7) sepia(0.12) brightness(1.02) hue-rotate(5deg) — the map reads like a hand-tinted copperplate print.</div>
+
+  <a href="guide.html" class="cta">Open Chicago Guide →</a>
+</main>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V17 — Really Green / Nature-Tech | Process Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,600;0,900;1,400&family=Space+Grotesk:wght@300;400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a1a0c; --surface: #0f2212; --accent: #00e840; --secondary: #a8ff00;
+      --text: #f0fff4; --muted: #4aaa60; --border: #1a7a28; --font-serif: 'Archivo', sans-serif;
+      --font-body: 'Space Grotesk', sans-serif; --font-mono: 'Space Mono', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      background-image: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,232,64,0.015) 3px, rgba(0,232,64,0.015) 4px);
+      color: var(--text); font-family: var(--font-body); font-size: 15px; line-height: 1.65; padding: 0 24px 80px;
+    }
+    header { max-width: 720px; margin: 0 auto; padding: 56px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 52px; }
+    .label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 12px; }
+    h1 { font-family: var(--font-serif); font-size: 3rem; font-weight: 900; line-height: 1.1; color: var(--accent); margin-bottom: 16px; text-shadow: 0 0 20px rgba(0,232,64,0.4); }
+    .sub { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
+    main { max-width: 720px; margin: 0 auto; }
+    h2 { font-family: var(--font-serif); font-size: 1.6rem; font-weight: 600; color: var(--accent); margin: 40px 0 16px; border-left: 3px solid var(--accent); padding-left: 12px; }
+    p { margin-bottom: 18px; color: var(--muted); }
+    .swatches { display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap; }
+    .swatch { width: 48px; height: 48px; border: 1px solid var(--border); border-radius: 2px; box-shadow: 0 0 10px rgba(0,232,64,0.2); }
+    .swatch-label { font-family: var(--font-mono); font-size: 9px; color: var(--muted); text-align: center; margin-top: 4px; }
+    .swatch-wrap { display: flex; flex-direction: column; align-items: center; }
+    .decision { background: var(--surface); border-left: 2px solid var(--accent); padding: 16px 20px; margin: 20px 0; border-radius: 0 2px 2px 0; box-shadow: 0 0 14px rgba(0,232,64,0.1); }
+    .decision strong { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--secondary); display: block; margin-bottom: 6px; }
+    a.cta { display: inline-block; margin-top: 24px; font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #000; background: var(--accent); padding: 10px 28px; text-decoration: none; border-radius: 2px; box-shadow: 0 0 20px rgba(0,232,64,0.4); transition: all 160ms; }
+    a.cta:hover { background: var(--secondary); box-shadow: 0 0 28px rgba(168,255,0,0.4); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="label">Chicago Field Guide — Iteration 17</div>
+  <h1>Really Green</h1>
+  <div class="sub">Nature Journal × Sustainability Dark Mode · Bioluminescent · Archivo 900</div>
+</header>
+<main>
+  <h2>Concept</h2>
+  <p>Two things at once: the deep ecological green of a nature journal, and the cybernetic glow of a sustainability dashboard. The dark forest background and electric green accent are simultaneously organic and synthetic.</p>
+  <p>The design rule: all tag colors stay within the green family. Architecture gets cyan-green. Nightlife gets neon lime. Jazz gets emerald. No hue leaves the green spectrum. The constraint produces a surprisingly rich palette when you explore the full green gamut.</p>
+
+  <h2>Color Palette</h2>
+  <div class="swatches">
+    <div class="swatch-wrap"><div class="swatch" style="background:#0a1a0c"></div><div class="swatch-label">#0a1a0c<br>Deep Forest</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#00e840"></div><div class="swatch-label">#00e840<br>Electric</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#a8ff00"></div><div class="swatch-label">#a8ff00<br>Neon Lime</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#1a7a28"></div><div class="swatch-label">#1a7a28<br>Green Border</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#f0fff4"></div><div class="swatch-label">#f0fff4<br>Near White</div></div>
+  </div>
+
+  <h2>Design Decisions</h2>
+  <div class="decision"><strong>Primary text is NOT green</strong> --color-text: #f0fff4, a near-white with a green cast. Reading electric green text on a dark background at paragraph lengths causes eye fatigue within minutes. The green stays for headings and accents only.</div>
+  <div class="decision"><strong>Scanline body overlay</strong> repeating-linear-gradient at 4px intervals simulates a low-resolution monitor scanline. The effect is visible only at close inspection — a subtle texture that reinforces the bioluminescent dashboard quality.</div>
+  <div class="decision"><strong>All-green tag spectrum</strong> Six tags, six distinct greens: cyan-green, electric green, neon lime, emerald, forest green, chartreuse. The constraint required exploring corners of the green gamut most UI designers never touch.</div>
+  <div class="decision"><strong>Topographic map</strong> brightness(0.25) saturate(0.2) hue-rotate(100deg) transforms the map into a near-black topo diagram with a green hue cast — reads like a night-vision satellite image.</div>
+
+  <a href="guide.html" class="cta">Open Chicago Guide →</a>
+</main>
+</body>
+</html>

@@ -1,0 +1,60 @@
+/* ============================================================
+   CHICAGO GUIDE — V11 University of Chicago
+   style.css
+   ============================================================ */
+:root {
+  --color-bg:        #f5f0e8;
+  --color-surface:   #faf7f2;
+  --color-surface-2: #e8e0d0;
+  --color-border:    #c4b8a8;
+
+  --color-maroon:    #800000;
+  --color-maroon-dk: #5c0000;
+  --color-ink:       #1a1410;
+
+  --color-text:      #1a1410;
+  --color-text-muted:#3a2e28;
+  --color-text-dim:  #8a7868;
+
+  --color-tag-arch:      #800000;
+  --color-tag-music:     #2e5982;
+  --color-tag-nightlife: #4a2060;
+  --color-tag-jazz:      #8b6914;
+  --color-tag-doors:     #5c2a00;
+  --color-tag-cafe:      #2e5c2e;
+
+  --font-serif: 'IM Fell English', 'Libre Baskerville', Georgia, serif;
+  --font-sans:  'Libre Baskerville', Georgia, serif;
+  --font-mono:  'Courier Prime', 'Courier New', monospace;
+  --font-body:  'Libre Baskerville', Georgia, serif;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.375rem;
+  --text-2xl:  1.75rem;
+  --text-3xl:  2.25rem;
+  --text-4xl:  3rem;
+
+  --space-1: 4px;  --space-2: 8px;   --space-3: 12px;
+  --space-4: 16px; --space-5: 24px;  --space-6: 32px;
+  --space-7: 48px; --space-8: 64px;  --space-9: 96px;
+
+  --radius-sm:   0px;
+  --radius-md:   0px;
+  --radius-lg:   0px;
+  --radius-pill: 2px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; }
+body { background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-surface-2); }
+::-webkit-scrollbar-thumb { background: var(--color-maroon); }
+
+.section-label { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-maroon); text-transform: uppercase; letter-spacing: 0.18em; display: block; }
+.tag-pill { font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 7px; border: 1.5px solid currentColor; border-radius: var(--radius-pill); }

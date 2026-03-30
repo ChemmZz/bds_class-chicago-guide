@@ -1,0 +1,61 @@
+/* ============================================================
+   CHICAGO GUIDE — V14 Autumn
+   style.css
+   ============================================================ */
+:root {
+  --color-bg:        #faf3e8;
+  --color-surface:   #fff8ee;
+  --color-surface-2: #f0e0c0;
+  --color-border:    #c8a878;
+
+  --color-amber:     #c87820;
+  --color-rust:      #b84820;
+  --color-maple:     #9e2a18;
+  --color-walnut:    #2c1a08;
+
+  --color-text:      #2c1a08;
+  --color-text-muted:#5a3a18;
+  --color-text-dim:  #9a7a50;
+
+  --color-tag-arch:      #8a5020;
+  --color-tag-music:     #5a7830;
+  --color-tag-nightlife: #7a3060;
+  --color-tag-jazz:      #c87820;
+  --color-tag-doors:     #9e2a18;
+  --color-tag-cafe:      #5c3a10;
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans:  'Crimson Pro', Georgia, serif;
+  --font-mono:  'Roboto Mono', 'Courier New', monospace;
+  --font-body:  'Crimson Pro', Georgia, serif;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.375rem;
+  --text-2xl:  1.75rem;
+  --text-3xl:  2.25rem;
+  --text-4xl:  3rem;
+
+  --space-1: 4px;  --space-2: 8px;   --space-3: 12px;
+  --space-4: 16px; --space-5: 24px;  --space-6: 32px;
+  --space-7: 48px; --space-8: 64px;  --space-9: 96px;
+
+  --radius-sm:   2px;
+  --radius-md:   6px;
+  --radius-lg:   10px;
+  --radius-pill: 6px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; }
+body { background: var(--color-bg); color: var(--color-text); font-family: var(--font-body); }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+::-webkit-scrollbar { width: 7px; }
+::-webkit-scrollbar-track { background: var(--color-surface-2); }
+::-webkit-scrollbar-thumb { background: var(--color-amber); border-radius: 2px; }
+
+.section-label { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-amber); text-transform: uppercase; letter-spacing: 0.16em; display: block; }
+.tag-pill { font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 2px 8px; border: 1px solid currentColor; border-radius: var(--radius-pill); }

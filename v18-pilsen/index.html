@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V18 — Mexican Heritage / Pilsen | Process Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Libre+Franklin:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdf8f0; --surface: #fffbf4; --marigold: #e8900a; --magenta: #cc2070;
+      --teal: #006878; --cobalt: #1a4a9e; --text: #1e0c04; --muted: #5c3820;
+      --border: #d4a870; --font-display: 'Abril Fatface', serif;
+      --font-body: 'Libre Franklin', sans-serif; --font-mono: 'Courier Prime', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      background-image:
+        repeating-linear-gradient(45deg, rgba(232,144,10,0.03) 0px, rgba(232,144,10,0.03) 1px, transparent 1px, transparent 14px),
+        repeating-linear-gradient(-45deg, rgba(204,32,112,0.03) 0px, rgba(204,32,112,0.03) 1px, transparent 1px, transparent 14px);
+      color: var(--text); font-family: var(--font-body); font-size: 15px; line-height: 1.7; padding: 0 24px 80px;
+    }
+    header { max-width: 720px; margin: 0 auto; padding: 56px 0 40px; border-bottom: 4px solid; border-image: linear-gradient(90deg, #e8900a, #cc2070, #006878, #1a4a9e) 1; margin-bottom: 52px; }
+    .label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--magenta); margin-bottom: 12px; }
+    h1 { font-family: var(--font-display); font-size: 3rem; line-height: 1.1; color: var(--text); margin-bottom: 16px; }
+    .sub { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
+    main { max-width: 720px; margin: 0 auto; }
+    h2 { font-family: var(--font-display); font-size: 1.6rem; color: var(--marigold); margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    p { margin-bottom: 18px; color: var(--muted); }
+    .swatches { display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap; }
+    .swatch { width: 48px; height: 48px; border: 1px solid var(--border); border-radius: 6px; box-shadow: 0 3px 10px rgba(30,12,4,0.12); }
+    .swatch-label { font-family: var(--font-mono); font-size: 9px; color: var(--muted); text-align: center; margin-top: 4px; }
+    .swatch-wrap { display: flex; flex-direction: column; align-items: center; }
+    .decision { background: var(--surface); border-left: 4px solid var(--teal); padding: 16px 20px; margin: 20px 0; border-radius: 0 6px 6px 0; box-shadow: 0 3px 12px rgba(30,12,4,0.1); }
+    .decision strong { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--magenta); display: block; margin-bottom: 6px; }
+    a.cta { display: inline-block; margin-top: 24px; font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--magenta); padding: 10px 28px; text-decoration: none; border-radius: 999px; box-shadow: 0 4px 16px rgba(204,32,112,0.35); transition: all 160ms; }
+    a.cta:hover { background: #a01858; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="label">Chicago Field Guide — Iteration 18</div>
+  <h1>Mexican Heritage / Pilsen</h1>
+  <div class="sub">18th Street · Murals · Talavera · Día de los Muertos · Abril Fatface</div>
+</header>
+<main>
+  <h2>Concept</h2>
+  <p>The Pilsen neighborhood on 18th Street: Halsted to Western, the murals of Juan Chávez Morado to the Día de los Muertos altars at the National Museum of Mexican Art. The color theory of this iteration comes from the ofrenda — marigolds, magenta paper flowers, cobalt talavera tiles, deep teal.</p>
+  <p>Abril Fatface is a Latin American display typeface in the tradition of the 19th century poster types brought to Mexico with the printing press — dense, theatrical, commanding. Four accent colors at full saturation prevent any single dominant hue.</p>
+
+  <h2>Color Palette</h2>
+  <div class="swatches">
+    <div class="swatch-wrap"><div class="swatch" style="background:#fdf8f0"></div><div class="swatch-label">#fdf8f0<br>Warm White</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#e8900a"></div><div class="swatch-label">#e8900a<br>Marigold</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#cc2070"></div><div class="swatch-label">#cc2070<br>Magenta</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#006878"></div><div class="swatch-label">#006878<br>Deep Teal</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#1a4a9e"></div><div class="swatch-label">#1a4a9e<br>Cobalt</div></div>
+  </div>
+
+  <h2>Design Decisions</h2>
+  <div class="decision"><strong>Papel picado gradient border</strong> The header's bottom border uses border-image: linear-gradient(90deg, #e8900a, #cc2070, #006878, #1a4a9e) — simulating the cut tissue paper banners (papel picado) hung at festivals and altars. A single CSS line that carries enormous cultural resonance.</div>
+  <div class="decision"><strong>Diamond-grid body background</strong> Two overlaid 45-degree repeating-linear-gradients in marigold and magenta at 3% opacity create a subtle diamond tile pattern — talavera geometry without overwhelming the text.</div>
+  <div class="decision"><strong>Four independent accent colors</strong> Most versions have one or two accent colors. Pilsen has four at full saturation: marigold, magenta, teal, cobalt. The rule: each tag category gets a distinct cultural hue. No hue repeats.</div>
+  <div class="decision"><strong>Vivid map filter</strong> saturate(1.3) hue-rotate(-5deg) contrast(1.05) — pushes the map toward the warm, saturated quality of Pilsen mural photography.</div>
+
+  <a href="guide.html" class="cta">Open Chicago Guide →</a>
+</main>
+</body>
+</html>

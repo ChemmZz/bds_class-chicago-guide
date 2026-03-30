@@ -1,0 +1,99 @@
+/* ============================================================
+   CHICAGO GUIDE — V14 Autumn — Guide Page
+   ============================================================ */
+.guide-page { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+
+.guide-header {
+  height: 58px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--space-6);
+  background: var(--color-amber);
+  border-bottom: 3px solid var(--color-rust);
+  box-shadow: 0 3px 12px rgba(44,26,8,0.2);
+  z-index: 10;
+}
+
+.back-link { font-family: var(--font-mono); font-size: var(--text-xs); color: rgba(255,248,238,0.8); text-decoration: none; letter-spacing: 0.08em; border: 1px solid rgba(255,248,238,0.4); padding: 3px 10px; border-radius: var(--radius-sm); transition: all 150ms; }
+.back-link:hover { color: #fff; border-color: #fff; }
+
+.guide-title { display: flex; flex-direction: column; align-items: center; line-height: 1; }
+.guide-title__city { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 700; letter-spacing: 0.12em; color: #fff; line-height: 1; text-shadow: 1px 1px 3px rgba(44,26,8,0.3); }
+.guide-title__sub { font-family: var(--font-mono); font-size: var(--text-xs); color: rgba(255,248,238,0.7); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px; }
+.chicago-stars { font-size: 11px; color: rgba(255,248,238,0.7); letter-spacing: 0.3em; }
+
+.guide-layout { flex: 1; display: grid; grid-template-columns: 390px 1fr; overflow: hidden; }
+
+.guide-sidebar { overflow-y: auto; padding: var(--space-5); border-right: 1px solid var(--color-border); display: flex; flex-direction: column; gap: var(--space-4); background: var(--color-bg); }
+
+.tag-bar { display: flex; flex-direction: column; gap: var(--space-3); }
+.tag-bar__label { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-dim); text-transform: uppercase; letter-spacing: 0.14em; }
+.tag-grid { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+
+.tag-btn {
+  font-family: var(--font-mono); font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 5px 12px; border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface); color: var(--color-text-muted);
+  cursor: pointer; transition: all 150ms;
+}
+.tag-btn:hover { border-color: var(--tag-color, #c87820); color: var(--tag-color, #c87820); background: var(--color-surface-2); }
+.tag-btn.active { background: var(--tag-color, #c87820); border-color: var(--tag-color, #c87820); color: #fff; box-shadow: inset 0 2px 4px rgba(0,0,0,0.15); }
+
+.tag-clear-btn { align-self: flex-start; font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-dim); text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 0; border: none; background: none; cursor: pointer; transition: color 150ms; border-bottom: 1px solid transparent; }
+.tag-clear-btn:hover { color: var(--color-rust); border-bottom-color: var(--color-rust); }
+
+.results-count { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-dim); letter-spacing: 0.04em; padding-bottom: var(--space-2); border-bottom: 2px solid var(--color-border); }
+
+.spots-grid { display: flex; flex-direction: column; gap: var(--space-3); padding-bottom: var(--space-7); }
+
+.spot-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--spot-color, #c87820);
+  border-radius: var(--radius-md);
+  padding: var(--space-4); position: relative; cursor: pointer;
+  transition: box-shadow 200ms, transform 200ms;
+  box-shadow: 0 2px 10px rgba(44,26,8,0.07);
+}
+.spot-card:hover { transform: translateX(3px); box-shadow: 0 4px 18px rgba(44,26,8,0.12), 0 0 0 1px var(--spot-color, #c87820); }
+.spot-card.focused { background: var(--color-surface-2); transform: translateX(3px); box-shadow: 0 6px 24px rgba(200,120,32,0.2), 0 0 0 2px var(--color-amber); }
+.spot-card.hidden { display: none; }
+.spot-card.entering { animation: cardEnter 220ms ease forwards; }
+@keyframes cardEnter { from { opacity: 0; } to { opacity: 1; } }
+
+.spot-card__number { position: absolute; top: var(--space-3); right: var(--space-3); width: 22px; height: 22px; border-radius: var(--radius-sm); background: var(--color-amber); color: #fff; font-family: var(--font-mono); font-size: 10px; font-weight: 700; display: grid; place-items: center; }
+.spot-card__name { font-family: var(--font-serif); font-size: 1.55rem; font-weight: 900; color: var(--color-text); margin-bottom: var(--space-1); padding-right: var(--space-7); line-height: 1; }
+.spot-card__address { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-dim); margin-bottom: var(--space-3); letter-spacing: 0.04em; }
+.spot-card__desc { font-size: var(--text-base); color: var(--color-text-muted); line-height: 1.65; margin-bottom: var(--space-3); font-weight: 300; }
+.spot-card__tip { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin-bottom: var(--space-3); padding: var(--space-2) var(--space-3); background: rgba(200,120,32,0.06); border-left: 3px solid var(--spot-color, #c87820); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+.tip-label { font-family: var(--font-mono); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-amber); margin-right: var(--space-2); }
+.spot-card__tags { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+
+.guide-map-panel { position: relative; overflow: hidden; }
+#map { width: 100%; height: 100%; }
+.leaflet-tile-pane { filter: sepia(0.35) saturate(1.2) brightness(0.96) hue-rotate(-8deg); }
+
+.route-marker { width: 28px; height: 28px; border-radius: var(--radius-sm); border: 2px solid rgba(255,255,255,0.7); display: flex; align-items: center; justify-content: center; font-family: 'Roboto Mono', monospace; font-weight: 700; font-size: 11px; box-shadow: 0 2px 8px rgba(44,26,8,0.35); }
+
+.chicago-popup .leaflet-popup-content-wrapper { background: var(--color-surface); border: 1px solid var(--color-border); border-top: 3px solid var(--color-amber); border-radius: var(--radius-md); box-shadow: 0 8px 24px rgba(44,26,8,0.15); padding: 0; }
+.chicago-popup .leaflet-popup-tip { background: var(--color-surface); }
+.chicago-popup .leaflet-popup-content { margin: 0; padding: 0; }
+.map-popup { padding: var(--space-4); font-family: var(--font-sans); color: var(--color-text); min-width: 220px; }
+.map-popup__num { width: 22px; height: 22px; border-radius: var(--radius-sm); display: inline-grid; place-items: center; font-family: var(--font-mono); font-size: 10px; font-weight: 700; margin-bottom: var(--space-2); background: var(--color-amber); color: #fff; }
+.map-popup__name { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; margin-bottom: 2px; }
+.map-popup__address { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-dim); margin-bottom: var(--space-3); }
+.map-popup__desc { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.5; margin-bottom: var(--space-2); }
+.map-popup__tip { font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: var(--space-3); }
+.map-popup__tags { display: flex; flex-wrap: wrap; gap: 4px; }
+
+.route-info { position: absolute; bottom: var(--space-4); left: 50%; transform: translateX(-50%); background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: var(--space-2) var(--space-5); display: flex; align-items: center; gap: var(--space-2); z-index: 1000; box-shadow: 0 4px 16px rgba(44,26,8,0.15); pointer-events: none; }
+.route-info__icon { color: var(--color-amber); font-size: var(--text-base); }
+.route-info__text { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-text-muted); letter-spacing: 0.06em; }
+.header-nav { display: flex; align-items: center; gap: 20px; }
+
+@media (max-width: 768px) {
+  .guide-layout { grid-template-columns: 1fr; grid-template-rows: 45vh 1fr; }
+  .guide-map-panel { grid-row: 1; order: -1; }
+  .guide-sidebar { grid-row: 2; border-right: none; border-top: 1px solid var(--color-border); }
+  .guide-header { padding: 0 var(--space-4); }
+}

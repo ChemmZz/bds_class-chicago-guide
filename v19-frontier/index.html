@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V19 — Western / Frontier | Process Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rye&family=Arvo:ital,wght@0,400;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f2e8d0; --surface: #ede0c4; --rust: #9e3018; --brass: #a87828;
+      --denim: #4a6080; --text: #2c1a08; --muted: #6a4828; --border: #b89068;
+      --font-serif: 'Rye', serif; --font-body: 'Arvo', serif; --font-mono: 'Courier Prime', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      color: var(--text); font-family: var(--font-body); font-size: 15px; line-height: 1.7; padding: 0 24px 80px;
+    }
+    header { max-width: 720px; margin: 0 auto; padding: 56px 0 40px; border-bottom: 2px solid var(--rust); margin-bottom: 52px; }
+    .label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--rust); margin-bottom: 12px; }
+    h1 { font-family: var(--font-serif); font-size: 3rem; letter-spacing: 0.15em; line-height: 1.15; color: var(--text); margin-bottom: 16px; text-shadow: 2px 2px 0 rgba(44,26,8,0.15); }
+    .sub { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: 0.08em; }
+    main { max-width: 720px; margin: 0 auto; }
+    h2 { font-family: var(--font-serif); font-size: 1.6rem; letter-spacing: 0.12em; color: var(--rust); margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); text-shadow: 1px 1px 0 rgba(44,26,8,0.12); }
+    p { margin-bottom: 18px; color: var(--muted); }
+    .swatches { display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap; }
+    .swatch { width: 48px; height: 48px; border: 1px solid var(--border); border-radius: 3px; box-shadow: 3px 3px 0 rgba(44,26,8,0.12); }
+    .swatch-label { font-family: var(--font-mono); font-size: 9px; color: var(--muted); text-align: center; margin-top: 4px; }
+    .swatch-wrap { display: flex; flex-direction: column; align-items: center; }
+    .decision { background: var(--surface); border-left: 4px solid var(--rust); padding: 16px 20px; margin: 20px 0; border-radius: 0 3px 3px 0; box-shadow: 3px 3px 0 rgba(44,26,8,0.1), inset 0 0 0 3px rgba(184,144,104,0.1); }
+    .decision strong { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--brass); display: block; margin-bottom: 6px; }
+    a.cta { display: inline-block; margin-top: 24px; font-family: var(--font-serif); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; color: #fff; background: var(--rust); padding: 10px 28px; text-decoration: none; border-radius: 3px; box-shadow: 3px 3px 0 rgba(44,26,8,0.25); transition: all 160ms; }
+    a.cta:hover { background: #7c2410; box-shadow: 4px 4px 0 rgba(44,26,8,0.3); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="label">Chicago Field Guide — Iteration 19</div>
+  <h1>Western / Frontier</h1>
+  <div class="sub">Wanted Poster · Desert Sand · Rust Red · Rye + Arvo · 19th-Century Land Survey</div>
+</header>
+<main>
+  <h2>Concept</h2>
+  <p>Chicago as a frontier city — which it was. Founded as Fort Dearborn in 1803, it was a trading post at the edge of the known world. The railroads made it the nexus of the American West. The stockyards defined it for a century. This is the city Carl Sandburg called "Hog Butcher for the World."</p>
+  <p>The constraint: wanted poster typography using Rye for display and Arvo (a slab serif) for body. Both are serifs. Both feel like wood type. The combination reads like a 19th-century broadside — authoritative, rough-edged, hand-set.</p>
+
+  <h2>Color Palette</h2>
+  <div class="swatches">
+    <div class="swatch-wrap"><div class="swatch" style="background:#f2e8d0"></div><div class="swatch-label">#f2e8d0<br>Desert Sand</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#9e3018"></div><div class="swatch-label">#9e3018<br>Rust Red</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#a87828"></div><div class="swatch-label">#a87828<br>Brass</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#4a6080"></div><div class="swatch-label">#4a6080<br>Faded Denim</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#2c1a08"></div><div class="swatch-label">#2c1a08<br>Saddle Brown</div></div>
+  </div>
+
+  <h2>Design Decisions</h2>
+  <div class="decision"><strong>Double-frame spot cards</strong> Cards use border-left for category color + inset 0 0 0 3px rgba(184,144,104,0.1) inner shadow to create a subtle double-frame effect — like a printed label with a decorative rule border.</div>
+  <div class="decision"><strong>Hard displacement shadows everywhere</strong> 3px 3px 0 rgba(44,26,8,0.2) on cards, buttons, popups. The same letterpress-print shadow language as V11 (UChicago), but warmer and more aged — saddle brown instead of maroon.</div>
+  <div class="decision"><strong>Slab-serif body text</strong> Arvo is a slab serif — the same structural DNA as the type on 19th-century wanted posters and railroad schedules. This is the only version where even the paragraph text feels like a historical document.</div>
+  <div class="decision"><strong>19th-century survey map</strong> sepia(0.6) saturate(0.55) brightness(0.92) contrast(1.02) — heavier sepia than any other version. The map reads like a GLO survey section plat from 1840, before the city was fully platted.</div>
+
+  <a href="guide.html" class="cta">Open Chicago Guide →</a>
+</main>
+</body>
+</html>

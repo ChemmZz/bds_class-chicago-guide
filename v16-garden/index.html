@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V16 — Garden / Botanical | Process Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:ital,wght@0,300;0,400;0,500;1,300&family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8f9f4; --surface: #fff; --accent: #4a7c3a; --secondary: #d4788a;
+      --text: #1e3020; --muted: #4a6050; --border: #c4d4b8; --font-serif: 'Lora', serif;
+      --font-body: 'Jost', sans-serif; --font-mono: 'Fira Mono', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--bg);
+      background-image: radial-gradient(circle, rgba(74,124,58,0.04) 1px, transparent 1px);
+      background-size: 20px 20px;
+      color: var(--text); font-family: var(--font-body); font-size: 15px; font-weight: 300; line-height: 1.75; padding: 0 24px 80px;
+    }
+    header { max-width: 720px; margin: 0 auto; padding: 56px 0 40px; border-bottom: 1px solid var(--border); margin-bottom: 52px; }
+    .label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--secondary); margin-bottom: 12px; }
+    h1 { font-family: var(--font-serif); font-size: 3.2rem; font-weight: 600; font-style: italic; line-height: 1.15; color: var(--text); margin-bottom: 16px; }
+    .sub { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
+    main { max-width: 720px; margin: 0 auto; }
+    h2 { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 500; color: var(--accent); margin: 40px 0 16px; }
+    p { margin-bottom: 18px; color: var(--muted); }
+    .swatches { display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap; }
+    .swatch { width: 48px; height: 48px; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 3px 10px rgba(30,48,32,0.1); }
+    .swatch-label { font-family: var(--font-mono); font-size: 9px; color: var(--muted); text-align: center; margin-top: 4px; }
+    .swatch-wrap { display: flex; flex-direction: column; align-items: center; }
+    .decision { background: var(--surface); border-left: 3px solid var(--accent); padding: 16px 20px; margin: 20px 0; border-radius: 0 10px 10px 0; box-shadow: 0 3px 10px rgba(30,48,32,0.08); }
+    .decision strong { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); display: block; margin-bottom: 6px; }
+    a.cta { display: inline-block; margin-top: 24px; font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--accent); padding: 10px 28px; text-decoration: none; border-radius: 20px; box-shadow: 0 4px 14px rgba(74,124,58,0.3); transition: all 160ms; }
+    a.cta:hover { background: #3a6030; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="label">Chicago Field Guide — Iteration 16</div>
+  <h1>Garden / Botanical</h1>
+  <div class="sub">Garfield Park Conservatory · Fern Green · Blossom Pink · Lora Italic</div>
+</header>
+<main>
+  <h2>Concept</h2>
+  <p>The Garfield Park Conservatory is one of the largest public greenhouses in the United States, a Jens Jensen design from 1908. On a February day it's the warmest, most alive place in the city. This iteration lives inside that glass envelope.</p>
+  <p>Lora's bracketed serifs and optical corrections make it exceptionally readable at body sizes while retaining strong personality in italic display use. Jost at 300 weight is clean enough to feel like greenhouse glass — it doesn't compete with the botanical illustration quality of the typography.</p>
+
+  <h2>Color Palette</h2>
+  <div class="swatches">
+    <div class="swatch-wrap"><div class="swatch" style="background:#f8f9f4"></div><div class="swatch-label">#f8f9f4<br>Greenhouse</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#4a7c3a"></div><div class="swatch-label">#4a7c3a<br>Fern</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#d4788a"></div><div class="swatch-label">#d4788a<br>Blossom</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#8070b8"></div><div class="swatch-label">#8070b8<br>Lavender</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#1e3020"></div><div class="swatch-label">#1e3020<br>Deep Moss</div></div>
+  </div>
+
+  <h2>Design Decisions</h2>
+  <div class="decision"><strong>Dot-grid body background</strong> radial-gradient 1px dots at 20px intervals in rgba(74,124,58,0.04). The faint grid creates a botanical illustration paper feel — fine graph paper for plant taxonomy drawings.</div>
+  <div class="decision"><strong>Sidebar gradient</strong> The sidebar drifts from #f8f9f4 at top to #edf2e8 at bottom — deeper green-tinted surface below, like looking deeper into the conservatory foliage.</div>
+  <div class="decision"><strong>Blossom pink accent on labels</strong> Tip labels in var(--secondary) blossom pink — the visual pop of a flower amid the green palette.</div>
+  <div class="decision"><strong>Botanical survey map filter</strong> saturate(0.85) sepia(0.08) brightness(1.0) hue-rotate(10deg) — a slight green cast to the map tiles, like a field survey printed on botanical survey paper.</div>
+
+  <a href="guide.html" class="cta">Open Chicago Guide →</a>
+</main>
+</body>
+</html>

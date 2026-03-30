@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V11 — University of Chicago | Process Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f0e8; --surface: #faf7f2; --accent: #800000; --text: #1a1410;
+      --muted: #6b5c4c; --border: #c4b8a8; --font-serif: 'IM Fell English', serif;
+      --font-body: 'Libre Baskerville', serif; --font-mono: 'Courier Prime', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.7; padding: 0 24px 80px; }
+    header { max-width: 720px; margin: 0 auto; padding: 56px 0 40px; border-bottom: 3px solid var(--accent); margin-bottom: 52px; }
+    .label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 12px; }
+    h1 { font-family: var(--font-serif); font-size: 3.2rem; line-height: 1.15; color: var(--text); margin-bottom: 16px; }
+    .sub { font-family: var(--font-mono); font-size: 13px; color: var(--muted); letter-spacing: 0.06em; }
+    main { max-width: 720px; margin: 0 auto; }
+    h2 { font-family: var(--font-serif); font-size: 1.6rem; color: var(--accent); margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+    p { margin-bottom: 18px; color: var(--muted); }
+    .swatches { display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap; }
+    .swatch { width: 48px; height: 48px; border: 2px solid var(--border); box-shadow: 3px 3px 0 rgba(92,0,0,0.12); }
+    .swatch-label { font-family: var(--font-mono); font-size: 9px; color: var(--muted); text-align: center; margin-top: 4px; letter-spacing: 0.05em; }
+    .swatch-wrap { display: flex; flex-direction: column; align-items: center; }
+    .decision { background: var(--surface); border-left: 4px solid var(--accent); padding: 16px 20px; margin: 20px 0; box-shadow: 3px 3px 0 rgba(92,0,0,0.1); }
+    .decision strong { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); display: block; margin-bottom: 6px; }
+    a.cta { display: inline-block; margin-top: 24px; font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); border: 2px solid var(--accent); padding: 10px 24px; text-decoration: none; box-shadow: 3px 3px 0 rgba(92,0,0,0.18); transition: all 150ms; }
+    a.cta:hover { background: var(--accent); color: var(--bg); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="label">Chicago Field Guide — Iteration 11</div>
+  <h1>University of Chicago</h1>
+  <div class="sub">Neo-Gothic Academic Gravitas · Maroon · Parchment · IM Fell English</div>
+</header>
+<main>
+  <h2>Concept</h2>
+  <p>Hyde Park's limestone towers and Regenstein Library stacks inspired this iteration. The University of Chicago aesthetic is defined by scholarly severity — no sans-serif anywhere, double-serif pairing, and maroon as the sole accent color.</p>
+  <p>IM Fell English was chosen for its hand-cut, slightly imperfect character — the feel of an eighteenth-century broadside. Libre Baskerville holds body text at comfortable reading weight. Courier Prime supplies the typewriter precision of academic footnotes.</p>
+
+  <h2>Color Palette</h2>
+  <div class="swatches">
+    <div class="swatch-wrap"><div class="swatch" style="background:#f5f0e8"></div><div class="swatch-label">#f5f0e8<br>Parchment</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#800000"></div><div class="swatch-label">#800000<br>Maroon</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#faf7f2"></div><div class="swatch-label">#faf7f2<br>Ivory</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#e8e0d0"></div><div class="swatch-label">#e8e0d0<br>Stone</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#1a1410"></div><div class="swatch-label">#1a1410<br>Ink</div></div>
+  </div>
+
+  <h2>Design Decisions</h2>
+  <div class="decision"><strong>Zero radii everywhere</strong> The university's Gothic architecture is all right angles, pointed arches — never curves. Every button, card, and popup is sharp-cornered.</div>
+  <div class="decision"><strong>Hard displacement shadows</strong> 3px 3px 0 shadows in deep maroon give the illusion of letterpress printing, echoing the university press tradition.</div>
+  <div class="decision"><strong>No sans-serif at all</strong> Both display and body fonts are serifs. The constraint forces a different rhythm — the page reads like a journal article, not a web app.</div>
+  <div class="decision"><strong>Sepia map filter</strong> saturate(0.55) brightness(0.93) sepia(0.5) turns OpenStreetMap tiles into an aged cartographic study, consistent with the academic reference aesthetic.</div>
+
+  <h2>Typography</h2>
+  <p>Display: <em>IM Fell English</em> — a digital revival of the Fell Types cut in Oxford c. 1670. Display: <em>Libre Baskerville</em> — scholarly, legible at small sizes. Mono: <em>Courier Prime</em> — academic footnote legibility.</p>
+
+  <a href="guide.html" class="cta">Open Chicago Guide →</a>
+</main>
+</body>
+</html>

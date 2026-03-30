@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V15 — Summer | Process Journal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,400&family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,700;1,6..12,300&family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fdfaf4; --surface: #fff; --accent: #2a80c8; --secondary: #3a8a3a;
+      --text: #1a3050; --muted: #4a6070; --border: #e0d0b0; --font-serif: 'Fraunces', serif;
+      --font-body: 'Nunito Sans', sans-serif; --font-mono: 'IBM Plex Mono', monospace;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 15px; line-height: 1.7; padding: 0 24px 80px; }
+    header { max-width: 720px; margin: 0 auto; padding: 56px 0 40px; border-bottom: 2px solid var(--border); margin-bottom: 52px; }
+    .label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 12px; }
+    h1 { font-family: var(--font-serif); font-size: 3.4rem; font-weight: 900; line-height: 1.1; color: var(--text); margin-bottom: 16px; }
+    .sub { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
+    main { max-width: 720px; margin: 0 auto; }
+    h2 { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 700; color: var(--accent); margin: 40px 0 16px; }
+    p { margin-bottom: 18px; color: var(--muted); }
+    .swatches { display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap; }
+    .swatch { width: 48px; height: 48px; border: 2px solid var(--border); border-radius: 12px; box-shadow: 0 4px 12px rgba(26,48,80,0.1); }
+    .swatch-label { font-family: var(--font-mono); font-size: 9px; color: var(--muted); text-align: center; margin-top: 4px; }
+    .swatch-wrap { display: flex; flex-direction: column; align-items: center; }
+    .decision { background: var(--surface); border-left: 3px solid var(--accent); padding: 16px 20px; margin: 20px 0; border-radius: 0 12px 12px 0; box-shadow: 0 4px 16px rgba(26,48,80,0.08); }
+    .decision strong { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); display: block; margin-bottom: 6px; }
+    a.cta { display: inline-block; margin-top: 24px; font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #fff; background: var(--accent); padding: 10px 32px; text-decoration: none; border-radius: 999px; box-shadow: 0 4px 16px rgba(42,128,200,0.35); transition: all 160ms; }
+    a.cta:hover { background: #1a6aaa; box-shadow: 0 6px 22px rgba(42,128,200,0.45); }
+  </style>
+</head>
+<body>
+<header>
+  <div class="label">Chicago Field Guide — Iteration 15</div>
+  <h1>Summer</h1>
+  <div class="sub">Lakefront Brightness · Sky Blue · July Sun · Fraunces Variable</div>
+</header>
+<main>
+  <h2>Concept</h2>
+  <p>July on the Lakefront Trail. Northerly Island is packed. The Taste of Chicago is loud. Oak Street Beach has been open since Memorial Day. The entire city has migrated outside. This is the version of Chicago that people who have never been here don't know exists.</p>
+  <p>Fraunces is a variable optical-size serif that looks almost like a slab at heavy optical sizes and almost like a transitional roman at small sizes. At opsz=144 weight=900, the display text has the outdoor sign energy of a festival poster.</p>
+
+  <h2>Color Palette</h2>
+  <div class="swatches">
+    <div class="swatch-wrap"><div class="swatch" style="background:#fdfaf4"></div><div class="swatch-label">#fdfaf4<br>Bleached</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#2a80c8"></div><div class="swatch-label">#2a80c8<br>Sky Blue</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#3a8a3a"></div><div class="swatch-label">#3a8a3a<br>Grass</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#f0b820"></div><div class="swatch-label">#f0b820<br>Sun</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#1a3050"></div><div class="swatch-label">#1a3050<br>Deep Navy</div></div>
+  </div>
+
+  <h2>Design Decisions</h2>
+  <div class="decision"><strong>Maximum softness</strong> border-radius: 6/12/20/999px throughout. Every element is rounded — the opposite of Brutalist or Gothic. Summer is soft-edged.</div>
+  <div class="decision"><strong>Active tag glow</strong> box-shadow: 0 4px 12px rgba(42,128,200,0.35) on active filter tags. The glow is the only light effect in this iteration — one deliberate touch of sunshine.</div>
+  <div class="decision"><strong>Saturated map</strong> saturate(1.15) brightness(1.06) hue-rotate(2deg) — colors pop like a summer photograph with the contrast cranked up a touch.</div>
+  <div class="decision"><strong>Sky blue route-info bar</strong> Solid var(--accent) background with white text — the blue bar floats above the map like a lifeguard flag.</div>
+
+  <a href="guide.html" class="cta">Open Chicago Guide →</a>
+</main>
+</body>
+</html>
