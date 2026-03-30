@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V21 — Art Deco / 1893 | Process Journal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#faf6ee; --surface:#f0ead8; --navy:#0d1a2e; --gold:#c8a84b; --text:#1a1408; --muted:#5a4a2a; --border:#d4c898; }
+    *{margin:0;padding:0;box-sizing:border-box} body{background:var(--bg);color:var(--text);font-family:'Cormorant Garamond',serif;font-size:16px;line-height:1.7;padding:0 24px 80px}
+    header{max-width:720px;margin:0 auto;padding:56px 0 40px;border-bottom:3px solid var(--gold);margin-bottom:52px}
+    .label{font-family:'Courier Prime',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:var(--gold);margin-bottom:12px}
+    h1{font-family:'Cinzel Decorative',serif;font-size:2.4rem;line-height:1.15;color:var(--navy);margin-bottom:16px;letter-spacing:0.08em}
+    .sub{font-family:'Courier Prime',monospace;font-size:12px;color:var(--muted);letter-spacing:0.06em}
+    main{max-width:720px;margin:0 auto} h2{font-family:'Cinzel Decorative',serif;font-size:1.2rem;letter-spacing:0.1em;color:var(--gold);margin:40px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+    p{margin-bottom:18px;color:var(--muted)}
+    .swatches{display:flex;gap:10px;margin:20px 0;flex-wrap:wrap} .swatch{width:48px;height:48px;border:1px solid var(--border);box-shadow:2px 2px 0 rgba(13,26,46,0.12)} .swatch-label{font-family:'Courier Prime',monospace;font-size:9px;color:var(--muted);text-align:center;margin-top:4px} .swatch-wrap{display:flex;flex-direction:column;align-items:center}
+    .decision{background:var(--surface);border-left:4px solid var(--gold);padding:16px 20px;margin:20px 0;box-shadow:2px 2px 0 rgba(13,26,46,0.1)} .decision strong{font-family:'Courier Prime',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);display:block;margin-bottom:6px}
+    a.cta{display:inline-block;margin-top:24px;font-family:'Courier Prime',monospace;font-size:12px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);border:2px solid var(--gold);padding:10px 28px;text-decoration:none;box-shadow:2px 2px 0 rgba(13,26,46,0.2);transition:all 150ms} a.cta:hover{background:var(--navy);color:var(--gold);border-color:var(--navy)}
+  </style>
+</head>
+<body>
+<header>
+  <div class="label">Chicago Field Guide — Iteration 21</div>
+  <h1>Art Deco<br>1893 World's Fair</h1>
+  <div class="sub">Cinzel Decorative · Deep Navy · Gold · Geometric Sunburst</div>
+</header>
+<main>
+  <h2>Concept</h2>
+  <p>The 1893 World's Columbian Exposition — Daniel Burnham's "White City" on the south lakefront. The fair introduced America to Beaux-Arts classicism, electric light, and a new idea of what a city could be. The Art Deco aesthetic that followed in the 1920s and 30s is its direct heir: geometric, gilded, unapologetically grand.</p>
+  <p>The header's flanking sunburst fans are pure geometric SVG — radiating lines and concentric arcs from a corner point, the classic Art Deco motif you'd find on elevator doors, theater marquees, and the Palmolive Building.</p>
+  <h2>Color Palette</h2>
+  <div class="swatches">
+    <div class="swatch-wrap"><div class="swatch" style="background:#faf6ee"></div><div class="swatch-label">#faf6ee<br>Ivory</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#0d1a2e"></div><div class="swatch-label">#0d1a2e<br>Deep Navy</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#c8a84b"></div><div class="swatch-label">#c8a84b<br>Gold</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#f0ead8"></div><div class="swatch-label">#f0ead8<br>Parchment</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#1a1408"></div><div class="swatch-label">#1a1408<br>Ink</div></div>
+  </div>
+  <h2>Design Decisions</h2>
+  <div class="decision"><strong>SVG Sunburst — pure geometry</strong> 12 radiating lines from a corner point + 3 concentric arcs + 2 ghost echo arcs + a diamond at origin. No curves beyond the arcs. Every element is a straight line or a circular arc — the Art Deco vocabulary reduced to its geometric essence.</div>
+  <div class="decision"><strong>Zero border-radius throughout</strong> Art Deco applies ornament to geometric forms — never softens them. Every card, button, and popup is hard-cornered.</div>
+  <div class="decision"><strong>Cinzel Decorative at small sizes</strong> Cinzel Decorative is designed for large display use. Using it at 1rem for card names and 1.2rem for section headers creates a compressed, formal dignity — like engraved letterhead.</div>
+  <div class="decision"><strong>Navy + gold only — no third color</strong> The palette discipline of the fair's official graphics: two colors, maximum contrast, no exceptions.</div>
+  <a href="guide.html" class="cta">Open Chicago Guide →</a>
+</main>
+</body>
+</html>

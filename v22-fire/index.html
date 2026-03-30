@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V22 — Great Chicago Fire | Process Journal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;1,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#f5ede0; --surface:#ede0cc; --ember:#d94f0a; --flame:#e8900a; --black:#0a0806; --text:#1a0c04; --muted:#6a4830; --border:#c8a878; }
+    *{margin:0;padding:0;box-sizing:border-box} body{background:var(--bg);color:var(--text);font-family:'Lora',serif;font-size:16px;line-height:1.7;padding:0 24px 80px}
+    header{max-width:720px;margin:0 auto;padding:56px 0 40px;border-bottom:3px solid var(--ember);margin-bottom:52px}
+    .label{font-family:'Courier Prime',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:var(--ember);margin-bottom:12px}
+    h1{font-family:'Playfair Display',serif;font-style:italic;font-size:3rem;font-weight:700;line-height:1.1;color:var(--text);margin-bottom:16px}
+    .sub{font-family:'Courier Prime',monospace;font-size:12px;color:var(--muted);letter-spacing:0.06em}
+    main{max-width:720px;margin:0 auto} h2{font-family:'Playfair Display',serif;font-style:italic;font-size:1.7rem;color:var(--ember);margin:40px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+    p{margin-bottom:18px;color:var(--muted)}
+    .swatches{display:flex;gap:10px;margin:20px 0;flex-wrap:wrap} .swatch{width:48px;height:48px;border:1px solid var(--border);border-radius:2px;box-shadow:2px 2px 0 rgba(10,8,6,0.1)} .swatch-label{font-family:'Courier Prime',monospace;font-size:9px;color:var(--muted);text-align:center;margin-top:4px} .swatch-wrap{display:flex;flex-direction:column;align-items:center}
+    .decision{background:var(--surface);border-left:4px solid var(--ember);padding:16px 20px;margin:20px 0;border-radius:2px} .decision strong{font-family:'Courier Prime',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--flame);display:block;margin-bottom:6px}
+    a.cta{display:inline-block;margin-top:24px;font-family:'Courier Prime',monospace;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:var(--ember);padding:10px 28px;text-decoration:none;border-radius:2px;box-shadow:2px 2px 0 rgba(10,8,6,0.2);transition:all 150ms} a.cta:hover{background:#b83a08}
+  </style>
+</head>
+<body>
+<header>
+  <div class="label">Chicago Field Guide — Iteration 22</div>
+  <h1>Great Chicago Fire</h1>
+  <div class="sub">October 8, 1871 · Ember Orange · Playfair Display Italic · Flame SVGs</div>
+</header>
+<main>
+  <h2>Concept</h2>
+  <p>October 8, 1871. The fire started in the O'Leary barn on DeKoven Street and burned for two days, destroying four square miles and leaving 100,000 homeless. Chicago rebuilt in two years. The fire is not a tragedy in Chicago's mythology — it is the origin story.</p>
+  <p>The header flames are a three-layer SVG composition: a dark back flame for depth, a bright center flame, a smaller front flame, plus a bright inner core and floating ember sparks. The layering mimics the light hierarchy of a real fire without using any CSS effects.</p>
+  <h2>Color Palette</h2>
+  <div class="swatches">
+    <div class="swatch-wrap"><div class="swatch" style="background:#f5ede0"></div><div class="swatch-label">#f5ede0<br>Ash Cream</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#d94f0a"></div><div class="swatch-label">#d94f0a<br>Ember</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#e8900a"></div><div class="swatch-label">#e8900a<br>Flame</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#f0a020"></div><div class="swatch-label">#f0a020<br>Core</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#0a0806"></div><div class="swatch-label">#0a0806<br>Char</div></div>
+  </div>
+  <h2>Design Decisions</h2>
+  <div class="decision"><strong>Six-layer flame SVG</strong> Back flame (#9a2800) → main flame (#d94f0a) → front flame (#e8820a) → bright core (#f0a020) → inner highlight (#ffe060) → tip (#fff0a0). Six distinct fills, no gradients. The ember ellipse at the base + floating spark circles complete the composition.</div>
+  <div class="decision"><strong>Playfair Display italic throughout</strong> Italic Playfair at card name level is unusual — most uses are headline-only. Here it carries a sense of urgency, of a story being told in the heat of the moment.</div>
+  <div class="decision"><strong>Warm sepia map</strong> sepia(0.5) saturate(1.1) hue-rotate(-8deg) — the warmest map of any version. Chicago's street grid seen through the glow of a burning city.</div>
+  <div class="decision"><strong>opacity: 0.55 on flame SVGs</strong> Higher than V20's roses (0.42) because the flame shapes are less detailed and need a stronger presence to read clearly against the near-black header.</div>
+  <a href="guide.html" class="cta">Open Chicago Guide →</a>
+</main>
+</body>
+</html>

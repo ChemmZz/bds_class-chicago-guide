@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V23 — Louis Sullivan Ornament | Process Journal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#faf5ee; --surface:#f0e8d8; --tc:#c4622a; --sage:#6a8a5a; --brown:#1a0e06; --text:#1a0e04; --muted:#6a4a2a; --border:#c8a878; }
+    *{margin:0;padding:0;box-sizing:border-box} body{background:var(--bg);color:var(--text);font-family:'Source Serif 4',serif;font-size:16px;line-height:1.7;padding:0 24px 80px}
+    header{max-width:720px;margin:0 auto;padding:56px 0 40px;border-bottom:3px solid var(--tc);margin-bottom:52px}
+    .label{font-family:'Courier Prime',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:var(--tc);margin-bottom:12px}
+    h1{font-family:'Bodoni Moda',serif;font-size:3rem;font-weight:700;line-height:1.1;letter-spacing:0.04em;color:var(--text);margin-bottom:16px}
+    .sub{font-family:'Courier Prime',monospace;font-size:12px;color:var(--muted);letter-spacing:0.06em}
+    main{max-width:720px;margin:0 auto} h2{font-family:'Bodoni Moda',serif;font-size:1.6rem;color:var(--tc);margin:40px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+    p{margin-bottom:18px;color:var(--muted)}
+    .swatches{display:flex;gap:10px;margin:20px 0;flex-wrap:wrap} .swatch{width:48px;height:48px;border:1px solid var(--border);box-shadow:2px 2px 0 rgba(26,14,6,0.1)} .swatch-label{font-family:'Courier Prime',monospace;font-size:9px;color:var(--muted);text-align:center;margin-top:4px} .swatch-wrap{display:flex;flex-direction:column;align-items:center}
+    .decision{background:var(--surface);border-left:4px solid var(--tc);padding:16px 20px;margin:20px 0;box-shadow:2px 2px 0 rgba(26,14,6,0.08)} .decision strong{font-family:'Courier Prime',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--tc);display:block;margin-bottom:6px}
+    a.cta{display:inline-block;margin-top:24px;font-family:'Courier Prime',monospace;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:var(--tc);padding:10px 28px;text-decoration:none;box-shadow:2px 2px 0 rgba(26,14,6,0.2);transition:all 150ms} a.cta:hover{background:#a04a1a}
+  </style>
+</head>
+<body>
+<header>
+  <div class="label">Chicago Field Guide — Iteration 23</div>
+  <h1>Louis Sullivan<br>Ornament</h1>
+  <div class="sub">Terra Cotta · Sage · Bodoni Moda · Sullivan Scroll & Palmette</div>
+</header>
+<main>
+  <h2>Concept</h2>
+  <p>Louis Sullivan — "the father of the skyscraper" — believed that architecture must express the life within it through organic ornament. His designs for the Guaranty Building, Carson Pirie Scott, and the Auditorium Theatre cover every surface in interlocking botanical forms: acanthus leaves, scrolling tendrils, palmette crowns, geometric interlace.</p>
+  <p>The header ornaments are Sullivan compositions in SVG: a central stem rising to a palmette crown, two scrolling tendrils with spiral terminals, two pairs of sage-green leaves, and an acanthus base. The right ornament mirrors the left — Sullivan's ornament is always symmetrical at the macro level, organic at the micro level.</p>
+  <h2>Color Palette</h2>
+  <div class="swatches">
+    <div class="swatch-wrap"><div class="swatch" style="background:#faf5ee"></div><div class="swatch-label">#faf5ee<br>Warm Cream</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#c4622a"></div><div class="swatch-label">#c4622a<br>Terra Cotta</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#6a8a5a"></div><div class="swatch-label">#6a8a5a<br>Sage</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#f0e8d8"></div><div class="swatch-label">#f0e8d8<br>Parchment</div></div>
+    <div class="swatch-wrap"><div class="swatch" style="background:#1a0e06"></div><div class="swatch-label">#1a0e06<br>Deep Brown</div></div>
+  </div>
+  <h2>Design Decisions</h2>
+  <div class="decision"><strong>Sullivan ornament SVG — 14 elements</strong> Stem path → palmette shape → palmette vein → left tendril path → left scroll terminal (ring + dot) → right tendril → right scroll terminal → 4 leaves → acanthus base → stem base block → 2 bud circles. Each element references a real Sullivan motif category.</div>
+  <div class="decision"><strong>Terra cotta + sage as the two-color palette</strong> Sullivan's Chicago buildings are clad in terra cotta tile — the material that survived the fire and became the city's architectural skin. Sage green for the leaf elements echoes the botanical naturalism of his ornamental philosophy.</div>
+  <div class="decision"><strong>Bodoni Moda for display</strong> Bodoni's extreme thick-thin stroke contrast shares Sullivan's dual vocabulary: the structural grid (thick stroke) and the ornamental detail (hairline). Two things at once, always.</div>
+  <div class="decision"><strong>Deep brown header background</strong> Sullivan's buildings are often darker at ground level — the ornament emerges from shadow. The deep brown header lets the terra cotta SVG ornaments glow against the dark, as they do on the actual buildings at night.</div>
+  <a href="guide.html" class="cta">Open Chicago Guide →</a>
+</main>
+</body>
+</html>

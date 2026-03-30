@@ -1,0 +1,97 @@
+/* ============================================================
+   CHICAGO GUIDE — V21 Art Deco / 1893 World's Fair
+   style.css
+   ============================================================ */
+:root {
+  --color-bg:        #faf6ee;
+  --color-surface:   #f0ead8;
+  --color-surface-2: #e8dcc4;
+  --color-border:    #d4c898;
+
+  --color-navy:      #0d1a2e;
+  --color-gold:      #c8a84b;
+  --color-black:     #1a1408;
+  --color-ink:       #0d1a2e;
+
+  --color-text:      #1a1408;
+  --color-text-muted:#5a4a2a;
+  --color-text-dim:  #9a8a6a;
+
+  --color-tag-arch:      #0d4a8a;
+  --color-tag-music:     #2a6a5a;
+  --color-tag-nightlife: #6a2a6a;
+  --color-tag-jazz:      #c8a84b;
+  --color-tag-doors:     #8a2a0a;
+  --color-tag-cafe:      #4a3a1a;
+
+  --font-serif: 'Cinzel Decorative', Georgia, serif;
+  --font-sans:  'Cormorant Garamond', Georgia, serif;
+  --font-mono:  'Courier Prime', 'Courier New', monospace;
+
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.375rem;
+  --text-2xl:  1.75rem;
+  --text-3xl:  2.25rem;
+  --text-4xl:  3rem;
+
+  --space-1: 4px;  --space-2: 8px;   --space-3: 12px;
+  --space-4: 16px; --space-5: 24px;  --space-6: 32px;
+  --space-7: 48px; --space-8: 64px;  --space-9: 96px;
+
+  --radius-sm:   0px;
+  --radius-md:   0px;
+  --radius-lg:   0px;
+  --radius-pill: 0px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.65;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: var(--color-gold); text-decoration: none; transition: color 180ms; }
+a:hover { color: var(--color-black); }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-surface-2); border-left: 1px solid var(--color-border); }
+::-webkit-scrollbar-thumb { background: var(--color-gold); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-navy); }
+
+::selection { background: var(--color-navy); color: var(--color-gold); }
+:focus-visible { outline: 2px solid var(--color-gold); outline-offset: 2px; }
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-text-dim);
+}
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: 0;
+  border: 1.5px solid currentColor;
+  opacity: 0.8;
+}
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
