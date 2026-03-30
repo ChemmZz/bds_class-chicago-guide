@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chicago Field Guide — Tattoo Parlour</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rye&family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="guide.css">
+</head>
+<body class="guide-page">
+  <header class="guide-header">
+    <div class="header-nav">
+      <a href="../index.html" class="back-link">← Gallery</a>
+      <a href="index.html" class="back-link">Journal</a>
+    </div>
+    <div class="guide-title">
+      <span class="guide-title__city">CHICAGO</span>
+      <span class="guide-title__sub">Field Guide</span>
+    </div>
+    <div class="chicago-stars" aria-hidden="true">★ ★ ★ ★</div>
+
+    <!-- Left rose (American traditional tattoo) -->
+    <svg class="header-rose header-rose--left"
+         viewBox="0 0 90 76" width="90" height="76"
+         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Stem -->
+      <path d="M 42 62 Q 39 68 40 76" stroke="#2d5a1e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- Left leaf -->
+      <path d="M 38 56 Q 16 50 12 36 Q 26 38 38 54 Z" fill="#2d5a1e" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="round"/>
+      <!-- Right leaf -->
+      <path d="M 48 58 Q 70 54 74 40 Q 60 44 48 56 Z" fill="#2d5a1e" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="round"/>
+      <!-- Small thorn left -->
+      <path d="M 36 52 Q 28 50 30 46 Q 34 50 36 52 Z" fill="#2d5a1e" stroke="#1a1a1a" stroke-width="1"/>
+      <!-- Calyx (base of bloom) -->
+      <path d="M 33 50 Q 34 58 42 62 Q 50 58 51 50 Q 47 46 42 46 Q 37 46 33 50 Z" fill="#1a4a12" stroke="#1a1a1a" stroke-width="1.5"/>
+      <!-- Calyx sepals -->
+      <path d="M 36 48 Q 32 44 34 40 Q 38 44 38 48 Z" fill="#2d5a1e" stroke="#1a1a1a" stroke-width="1"/>
+      <path d="M 48 48 Q 52 44 50 40 Q 46 44 46 48 Z" fill="#2d5a1e" stroke="#1a1a1a" stroke-width="1"/>
+      <!-- Back petals (dark, behind everything) -->
+      <ellipse cx="44" cy="27" rx="23" ry="16" fill="#6b0000" stroke="#1a1a1a" stroke-width="2"/>
+      <!-- Upper back petal arc -->
+      <path d="M 28 22 Q 36 8 44 10 Q 52 8 60 22 Q 52 16 44 16 Q 36 16 28 22 Z" fill="#7a0000" stroke="#1a1a1a" stroke-width="1.5"/>
+      <!-- Left side petal -->
+      <path d="M 22 30 Q 10 20 18 12 Q 26 22 28 36 Q 25 36 22 30 Z" fill="#8b0000" stroke="#1a1a1a" stroke-width="1.5"/>
+      <!-- Right side petal -->
+      <path d="M 66 30 Q 78 20 70 12 Q 62 22 60 36 Q 63 36 66 30 Z" fill="#8b0000" stroke="#1a1a1a" stroke-width="1.5"/>
+      <!-- Front cup petals -->
+      <path d="M 28 40 Q 25 24 38 17 Q 52 24 58 40 Q 52 47 44 49 Q 36 47 28 40 Z" fill="#cc2020" stroke="#1a1a1a" stroke-width="2"/>
+      <!-- Petal fold left -->
+      <path d="M 34 40 Q 31 30 36 21 Q 38 30 37 40" stroke="#a01818" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <!-- Petal fold right -->
+      <path d="M 50 38 Q 53 27 48 20 Q 46 29 47 38" stroke="#a01818" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <!-- Inner highlight petal -->
+      <path d="M 34 40 Q 32 28 38 22 Q 44 28 42 40 Q 40 44 38 45 Q 36 44 34 40 Z" fill="#e03030" stroke="#1a1a1a" stroke-width="1.5"/>
+      <!-- Inner curl -->
+      <path d="M 36 38 Q 35 32 38 28 Q 41 32 40 38" stroke="#cc1010" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <!-- Top opening tip -->
+      <path d="M 36 25 Q 38 18 40 25 Q 39 28 38 28 Q 37 28 36 25 Z" fill="#f04040" stroke="#1a1a1a" stroke-width="1"/>
+    </svg>
+
+    <!-- Right rose (CSS-mirrored via scaleX(-1) in .header-rose--right) -->
+    <svg class="header-rose header-rose--right"
+         viewBox="0 0 90 76" width="90" height="76"
+         xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Stem -->
+      <path d="M 42 62 Q 39 68 40 76" stroke="#2d5a1e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- Left leaf -->
+      <path d="M 38 56 Q 16 50 12 36 Q 26 38 38 54 Z" fill="#2d5a1e" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="round"/>
+      <!-- Right leaf -->
+      <path d="M 48 58 Q 70 54 74 40 Q 60 44 48 56 Z" fill="#2d5a1e" stroke="#1a1a1a" stroke-width="2" stroke-linejoin="round"/>
+      <!-- Small thorn left -->
+      <path d="M 36 52 Q 28 50 30 46 Q 34 50 36 52 Z" fill="#2d5a1e" stroke="#1a1a1a" stroke-width="1"/>
+      <!-- Calyx (base of bloom) -->
+      <path d="M 33 50 Q 34 58 42 62 Q 50 58 51 50 Q 47 46 42 46 Q 37 46 33 50 Z" fill="#1a4a12" stroke="#1a1a1a" stroke-width="1.5"/>
+      <!-- Calyx sepals -->
+      <path d="M 36 48 Q 32 44 34 40 Q 38 44 38 48 Z" fill="#2d5a1e" stroke="#1a1a1a" stroke-width="1"/>
+      <path d="M 48 48 Q 52 44 50 40 Q 46 44 46 48 Z" fill="#2d5a1e" stroke="#1a1a1a" stroke-width="1"/>
+      <!-- Back petals (dark, behind everything) -->
+      <ellipse cx="44" cy="27" rx="23" ry="16" fill="#6b0000" stroke="#1a1a1a" stroke-width="2"/>
+      <!-- Upper back petal arc -->
+      <path d="M 28 22 Q 36 8 44 10 Q 52 8 60 22 Q 52 16 44 16 Q 36 16 28 22 Z" fill="#7a0000" stroke="#1a1a1a" stroke-width="1.5"/>
+      <!-- Left side petal -->
+      <path d="M 22 30 Q 10 20 18 12 Q 26 22 28 36 Q 25 36 22 30 Z" fill="#8b0000" stroke="#1a1a1a" stroke-width="1.5"/>
+      <!-- Right side petal -->
+      <path d="M 66 30 Q 78 20 70 12 Q 62 22 60 36 Q 63 36 66 30 Z" fill="#8b0000" stroke="#1a1a1a" stroke-width="1.5"/>
+      <!-- Front cup petals -->
+      <path d="M 28 40 Q 25 24 38 17 Q 52 24 58 40 Q 52 47 44 49 Q 36 47 28 40 Z" fill="#cc2020" stroke="#1a1a1a" stroke-width="2"/>
+      <!-- Petal fold left -->
+      <path d="M 34 40 Q 31 30 36 21 Q 38 30 37 40" stroke="#a01818" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <!-- Petal fold right -->
+      <path d="M 50 38 Q 53 27 48 20 Q 46 29 47 38" stroke="#a01818" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <!-- Inner highlight petal -->
+      <path d="M 34 40 Q 32 28 38 22 Q 44 28 42 40 Q 40 44 38 45 Q 36 44 34 40 Z" fill="#e03030" stroke="#1a1a1a" stroke-width="1.5"/>
+      <!-- Inner curl -->
+      <path d="M 36 38 Q 35 32 38 28 Q 41 32 40 38" stroke="#cc1010" stroke-width="1" fill="none" stroke-linecap="round"/>
+      <!-- Top opening tip -->
+      <path d="M 36 25 Q 38 18 40 25 Q 39 28 38 28 Q 37 28 36 25 Z" fill="#f04040" stroke="#1a1a1a" stroke-width="1"/>
+    </svg>
+  </header>
+
+  <div class="guide-layout">
+    <aside class="guide-sidebar">
+      <section class="tag-bar">
+        <p class="tag-bar__label">Filter by vibe</p>
+        <div class="tag-grid">
+          <button class="tag-btn" data-tag="architecture">Architecture</button>
+          <button class="tag-btn" data-tag="music">Music</button>
+          <button class="tag-btn" data-tag="nightlife">Nightlife</button>
+          <button class="tag-btn" data-tag="jazz">Jazz</button>
+          <button class="tag-btn" data-tag="doors">Doors</button>
+          <button class="tag-btn" data-tag="cafe">Café</button>
+        </div>
+        <button class="tag-clear-btn" id="clearTags">Show all</button>
+      </section>
+      <p class="results-count" id="resultsCount">Showing all 25 spots</p>
+      <div class="spots-grid" id="spotsGrid"></div>
+    </aside>
+    <main class="guide-map-panel">
+      <div id="map"></div>
+      <div class="route-info" id="routeInfo" hidden>
+        <span class="route-info__icon">↗</span>
+        <span class="route-info__text">Optimized route &middot; <span id="stopCount">0</span> stops</span>
+      </div>
+    </main>
+  </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="guide.js"></script>
+</body>
+</html>
