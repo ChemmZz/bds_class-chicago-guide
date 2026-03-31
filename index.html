@@ -256,11 +256,107 @@
       font-size: 10px;
     }
 
+    /* ── Process narrative ────────────────────────────────── */
+    .process-section {
+      padding: 64px 40px;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .process-intro-label {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .process-intro-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .process-phases {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .process-phase {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 24px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border);
+    }
+    .process-phase:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .phase-label {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--dim);
+      padding-top: 3px;
+    }
+
+    .phase-text {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.85;
+      letter-spacing: 0.02em;
+    }
+    .phase-text em { font-style: italic; color: var(--text); }
+
+    /* ── Selected card ────────────────────────────────────── */
+    .iteration-card--selected {
+      background: #111008;
+      outline: 1px solid rgba(193,127,90,0.5);
+    }
+    .iteration-card--selected::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), #e8900a);
+    }
+
+    .selected-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(193,127,90,0.4);
+      padding: 4px 10px;
+      margin-bottom: -12px;
+    }
+    .selected-badge::before {
+      content: '★';
+      font-size: 8px;
+    }
+
     /* ── Responsive ───────────────────────────────────────── */
     @media (max-width: 600px) {
       .lab-header, .lab-hero, .lab-footer { padding-left: 20px; padding-right: 20px; }
       .iteration-card { padding: 28px 20px; }
       .lab-title { font-size: clamp(2.5rem, 10vw, 5rem); }
+      .process-section { grid-template-columns: 1fr; gap: 28px; padding: 40px 20px; }
+      .process-phase { grid-template-columns: 1fr; gap: 8px; }
     }
   </style>
 </head>
@@ -281,6 +377,52 @@
       A series of design explorations for a Chicago tourist guide.
       Same data — 25 spots, 6 tags, one routing algorithm — different visions.
     </p>
+  </section>
+
+  <section class="process-section">
+    <p class="process-intro-label">The Process</p>
+    <div class="process-phases">
+
+      <div class="process-phase">
+        <span class="phase-label">V1 — V19</span>
+        <p class="phase-text">
+          The first 19 iterations were a wide-open exploration, built entirely with Claude.
+          The brief was loose: push the same data set — 25 spots, one routing algorithm —
+          through as many visual registers as possible. Themes ranged from abstract cultural
+          concepts like <em>Americana Tattoo</em> and <em>City Vice</em> all the way to
+          architecturally literal ones like <em>Concrete Brutalist</em> — pun very much
+          intended. Seasons, eras, subcultures, neighborhoods. The goal was breadth first.
+        </p>
+      </div>
+
+      <div class="process-phase">
+        <span class="phase-label">V20 — V23</span>
+        <p class="phase-text">
+          The next phase narrowed the focus to one specific detail: the header.
+          V20 revisited the Tattoo theme from V5 but replaced the plain title bar with a
+          barbershop-sign treatment — two inline SVG roses flanking the CHICAGO wordmark.
+          That pattern carried forward into V21–V23: Art Deco sunburst fans, a Great Chicago
+          Fire flame cluster, Louis Sullivan's botanical scroll ornaments. Each version asked
+          the header to do more visual work and carry the theme's argument.
+        </p>
+      </div>
+
+      <div class="process-phase">
+        <span class="phase-label">V24 — V25</span>
+        <p class="phase-text">
+          By V18, the Pilsen palette — marigold, magenta, teal, cobalt on warm parchment —
+          had emerged as the clear favorite. The goal for the final iteration was to refine
+          it on three specific points: make the CHICAGO title bold, replace the marigold
+          stars with red ones in honor of the Chicago flag, and add a thrift-store filter
+          alongside the existing six categories. That prompt also mentioned a last-minute
+          idea about including thrift spots. Claude misread it — V24 became a standalone
+          thrift-only guide with price tag SVGs added to the header. V25 corrected course:
+          same Pilsen palette intact, six original filters plus thrift as a seventh,
+          bold title, red flag stars, no header imagery. Exactly as intended.
+        </p>
+      </div>
+
+    </div>
   </section>
 
   <main class="iterations-grid">
@@ -875,6 +1017,37 @@
       </div>
     </article>
 
+    <!-- v20: Tattoo Parlour -->
+    <article class="iteration-card">
+      <div class="card-palette">
+        <span style="background:#f5efe0"></span>
+        <span style="background:#8b0000"></span>
+        <span style="background:#c9a84c"></span>
+        <span style="background:#1a1a1a"></span>
+        <span style="background:#2d5a1e"></span>
+      </div>
+      <div>
+        <p class="card-version">v20 · 2026</p>
+        <h2 class="card-title">Tattoo Parlour</h2>
+      </div>
+      <p class="card-style">
+        V5 revisited with a barbershop sign header. Two translucent American traditional
+        roses — inline SVG, 16 layers each, bold black outlines — flank the CHICAGO title.
+        Rye + Special Elite + Courier Prime. Same parchment palette, same sepia map.
+      </p>
+      <div class="card-tags">
+        <span class="card-tag">Light mode</span>
+        <span class="card-tag">Tattoo roses</span>
+        <span class="card-tag">Inline SVG</span>
+        <span class="card-tag">Parchment</span>
+        <span class="card-tag">Flash sheet</span>
+      </div>
+      <div class="card-actions">
+        <a href="v20-tattoo2/guide.html" class="card-link card-link--primary">View Guide →</a>
+        <a href="v20-tattoo2/index.html" class="card-link card-link--secondary">Process Journal</a>
+      </div>
+    </article>
+
     <!-- v21: Art Deco / 1893 World's Fair -->
     <article class="iteration-card">
       <div class="card-palette">
@@ -998,8 +1171,9 @@
       </div>
     </article>
 
-    <!-- v25: Pilsen Theme Enhanced -->
-    <article class="iteration-card">
+    <!-- v25: Pilsen Theme Enhanced — FINAL CHOICE -->
+    <article class="iteration-card iteration-card--selected">
+      <span class="selected-badge">Final Choice</span>
       <div class="card-palette">
         <span style="background:#fdf8f0"></span>
         <span style="background:#e8900a"></span>
@@ -1025,37 +1199,6 @@
       <div class="card-actions">
         <a href="v25-pilsen-enhanced/guide.html" class="card-link card-link--primary">View Guide →</a>
         <a href="v25-pilsen-enhanced/index.html" class="card-link card-link--secondary">Process Journal</a>
-      </div>
-    </article>
-
-    <!-- v20: Tattoo Parlour -->
-    <article class="iteration-card">
-      <div class="card-palette">
-        <span style="background:#f5efe0"></span>
-        <span style="background:#8b0000"></span>
-        <span style="background:#c9a84c"></span>
-        <span style="background:#1a1a1a"></span>
-        <span style="background:#2d5a1e"></span>
-      </div>
-      <div>
-        <p class="card-version">v20 · 2026</p>
-        <h2 class="card-title">Tattoo Parlour</h2>
-      </div>
-      <p class="card-style">
-        V5 revisited with a barbershop sign header. Two translucent American traditional
-        roses — inline SVG, 16 layers each, bold black outlines — flank the CHICAGO title.
-        Rye + Special Elite + Courier Prime. Same parchment palette, same sepia map.
-      </p>
-      <div class="card-tags">
-        <span class="card-tag">Light mode</span>
-        <span class="card-tag">Tattoo roses</span>
-        <span class="card-tag">Inline SVG</span>
-        <span class="card-tag">Parchment</span>
-        <span class="card-tag">Flash sheet</span>
-      </div>
-      <div class="card-actions">
-        <a href="v20-tattoo2/guide.html" class="card-link card-link--primary">View Guide →</a>
-        <a href="v20-tattoo2/index.html" class="card-link card-link--secondary">Process Journal</a>
       </div>
     </article>
 
